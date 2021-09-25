@@ -39,7 +39,7 @@ namespace EnemyBehaviour.Health
         protected float HealthValue
         {
             get => _healthValue;
-            set => _healthValue = Mathf.Clamp(value, 0, MaxHealth);
+            private set => _healthValue = Mathf.Clamp(value, 0, MaxHealth);
         }
 
         protected float MaxHealth => maxHealth;

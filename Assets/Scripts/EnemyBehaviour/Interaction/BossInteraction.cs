@@ -1,6 +1,4 @@
-﻿using System;
-using EnemyBehaviour.Health;
-using UI;
+﻿using EnemyBehaviour.Health;
 using UnityEngine;
 
 namespace EnemyBehaviour.Interaction

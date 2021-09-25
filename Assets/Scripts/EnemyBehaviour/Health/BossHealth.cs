@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UI;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace EnemyBehaviour.Health
@@ -7,8 +8,8 @@ namespace EnemyBehaviour.Health
     {
         #region Fields
 
-        // UI for hero ghost
-        [SerializeField] private Slider healthBar;
+        // UI script for changing health
+        [SerializeField] private UIHealth uiHealth;
         
         #endregion
 
@@ -16,26 +17,28 @@ namespace EnemyBehaviour.Health
         
         protected override void Start()
         {
-            if (healthBar is null)
+            if (uiHealth is null)
             {
                 Debug.LogError("You need to bind ghost health bar in field");
             }
             
             base.Start();
-            healthBar.maxValue = MaxHealth;
-            healthBar.value = MaxHealth;
+            
+            // health text UI
+            uiHealth.MaxValue = MaxHealth;
+            uiHealth.Set(MaxHealth);
         }
 
         public override void Restore(float amount)
         {
             base.Restore(amount);
-            healthBar.value = HealthValue;
+            uiHealth.Set(HealthValue);
         }
 
         public override void Reduce(float amount)
         {
             base.Reduce(amount);
-            healthBar.value = HealthValue;
+            uiHealth.Set(HealthValue);
             if (HealthValue <= 0) Debug.Log("Boss has been beaten");
         }
         
