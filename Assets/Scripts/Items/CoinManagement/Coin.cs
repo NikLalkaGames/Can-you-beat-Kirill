@@ -1,6 +1,4 @@
-using System;
 using Items.Base;
-using TMPro;
 using UnityEngine;
 
 namespace Items.CoinManagement
