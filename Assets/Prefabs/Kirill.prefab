@@ -149,7 +149,7 @@ MonoBehaviour:
   defense: 0
   immortal: 0
   timeInvincible: 1
-  healthBar: {fileID: 0}
+  uiHealth: {fileID: 0}
 --- !u!114 &69399999
 MonoBehaviour:
   m_ObjectHideFlags: 0

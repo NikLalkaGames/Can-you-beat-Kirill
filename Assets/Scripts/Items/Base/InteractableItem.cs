@@ -17,12 +17,12 @@ namespace Items.Base
 
         protected virtual void OnMouseUpAsButton()
         {
-            // Debug.Log($"MouseUp on {_name}");
+            Debug.Log($"MouseUp on {_name}");
         }
 
         protected virtual void OnMouseDown()
         {
-            // Debug.Log($"MouseDown on {_name}");
+            Debug.Log($"MouseDown on {_name}");
         }
     }
 }

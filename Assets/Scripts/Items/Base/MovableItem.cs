@@ -1,0 +1,125 @@
+﻿using System;
+using Common;
+using Items.Enum;
+using MonsterLove.StateMachine;
+using UnityEngine;
+
+namespace Items.Base
+{
+    public class MovableItem : InteractableItem
+    {
+        #region Fields
+        
+        #region StateMachine definition
+
+        private enum States
+        {
+            FollowsTheMouse,
+            World
+        }
+
+        private StateMachine<States, StateDriverUnity> _fsm;
+        
+        #endregion
+        
+        // UI callbacks
+        
+        private Action _returnCallback;
+
+        private Action _clearItemSlotCallback;
+        
+        // Positioning  
+        
+        private Transform _transform;
+        
+        #endregion
+        
+        #region Static
+
+        // TODO: rename to real item names
+        private static GameObject GetObjectBy(ItemType itemType)
+        {
+            return itemType switch
+            {
+                ItemType.PoisonedBurger => Resources.Load("PoisonedBurger") as GameObject,
+                ItemType.Obstacle => Resources.Load("PoisonedBurger") as GameObject,
+                ItemType.DamagePotion => Resources.Load("PoisonedBurger") as GameObject,
+                _ => throw new ArgumentException("Item null reference exception or wrong item")
+            };
+        }
+
+        public static MovableItem InstantiateItem(ItemType itemTypeType)
+        {
+            GetObjectBy(itemTypeType).TryGetComponent(out MovableItem movableItem);
+            return Instantiate(movableItem, GameManager.Instance.MousePosition, Quaternion.identity);
+        }
+        
+        #endregion
+
+        #region Base Monobehaviour
+        
+        protected override void Start()
+        {
+            base.Start();
+            _transform = transform;
+            _fsm = new StateMachine<States, StateDriverUnity>(this);
+            _fsm.ChangeState(States.FollowsTheMouse);
+        }
+        
+        private void Update()
+        {
+            _fsm.Driver.Update.Invoke();
+        }
+        
+        protected override void OnMouseDown()
+        {
+            base.OnMouseDown();
+            _fsm.Driver.OnMouseDown.Invoke();
+        }
+
+        #endregion
+        
+        #region State Machine implementation
+
+        private void FollowsTheMouse_Enter()
+        {
+            Debug.Log($"{_name} enters follows the mouse state");
+        }
+        
+        private void FollowsTheMouse_Update()
+        {            
+            _transform.position = GameManager.Instance.MousePosition;
+
+            if (Input.GetButtonDown("Fire2"))
+            {
+                _returnCallback?.Invoke();
+                _returnCallback = null;
+                Destroy(gameObject);
+            }
+        }
+
+        private void FollowsTheMouse_OnMouseDown()
+        {
+            _clearItemSlotCallback?.Invoke();
+            _clearItemSlotCallback = null;
+            _fsm.ChangeState(States.World);
+        }
+
+        private void World_Enter()
+        {
+            Debug.Log($"{_name} enters world state");
+        }
+        
+        #endregion
+        
+        #region External Methods
+        
+        public void AttachCallbacks(Action returnCallback, Action clearItemSlotCallback)
+        {
+            _returnCallback = returnCallback;
+            _clearItemSlotCallback = clearItemSlotCallback;
+        }
+        
+        #endregion
+    }
+}
