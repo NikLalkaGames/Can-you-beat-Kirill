@@ -8,7 +8,19 @@ namespace Items.Base
 {
     public class MovableItem : InteractableItem
     {
+        #region Fields
+        
+        #region StateMachine definition
 
+        private enum States
+        {
+            FollowsTheMouse,
+            World
+        }
+
+        private StateMachine<States, StateDriverUnity> _fsm;
+        
+        #endregion
         
         // UI callbacks
         
@@ -20,11 +32,11 @@ namespace Items.Base
         
         private Transform _transform;
         
-        private bool _followingMouse;
+        #endregion
         
         #region Static
 
-        // TODO: rename to real items
+        // TODO: rename to real item names
         private static GameObject GetObjectBy(ItemType itemType)
         {
             return itemType switch
@@ -36,7 +48,7 @@ namespace Items.Base
             };
         }
 
-        public static MovableItem InstantiateItem(Enum.ItemType itemTypeType)
+        public static MovableItem InstantiateItem(ItemType itemTypeType)
         {
             GetObjectBy(itemTypeType).TryGetComponent(out MovableItem movableItem);
             return Instantiate(movableItem, GameManager.Instance.MousePosition, Quaternion.identity);
@@ -44,38 +56,70 @@ namespace Items.Base
         
         #endregion
 
+        #region Base Monobehaviour
+        
         protected override void Start()
         {
+            base.Start();
             _transform = transform;
-            _followingMouse = true;
+            _fsm = new StateMachine<States, StateDriverUnity>(this);
+            _fsm.ChangeState(States.FollowsTheMouse);
         }
-
+        
         private void Update()
         {
-            if (!_followingMouse) return;
-            
+            _fsm.Driver.Update.Invoke();
+        }
+        
+        protected override void OnMouseDown()
+        {
+            base.OnMouseDown();
+            _fsm.Driver.OnMouseDown.Invoke();
+        }
+
+        #endregion
+        
+        #region State Machine implementation
+
+        private void FollowsTheMouse_Enter()
+        {
+            Debug.Log($"{_name} enters follows the mouse state");
+        }
+        
+        private void FollowsTheMouse_Update()
+        {            
             _transform.position = GameManager.Instance.MousePosition;
 
             if (Input.GetButtonDown("Fire2"))
             {
-                _followingMouse = false;
-                Destroy(gameObject);
                 _returnCallback?.Invoke();
                 _returnCallback = null;
+                Destroy(gameObject);
             }
         }
 
-        protected override void OnMouseDown()
+        private void FollowsTheMouse_OnMouseDown()
         {
-            _followingMouse = false;
             _clearItemSlotCallback?.Invoke();
             _clearItemSlotCallback = null;
+            _fsm.ChangeState(States.World);
         }
+
+        private void World_Enter()
+        {
+            Debug.Log($"{_name} enters world state");
+        }
+        
+        #endregion
+        
+        #region External Methods
         
         public void AttachCallbacks(Action returnCallback, Action clearItemSlotCallback)
         {
             _returnCallback = returnCallback;
             _clearItemSlotCallback = clearItemSlotCallback;
         }
+        
+        #endregion
     }
 }
