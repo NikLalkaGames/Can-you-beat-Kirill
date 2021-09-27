@@ -1,43 +1,45 @@
 ﻿using System;
 using Common;
+using Items.Enum;
+using MonsterLove.StateMachine;
 using UnityEngine;
 
 namespace Items.Base
 {
     public class MovableItem : InteractableItem
     {
-        // TODO: in future change logic to state machine
+
         
-        public Action returnCallback;
+        // UI callbacks
+        
+        private Action _returnCallback;
 
-        public Action destroyCallback;
-
+        private Action _clearItemSlotCallback;
+        
+        // Positioning  
+        
         private Transform _transform;
-
+        
         private bool _followingMouse;
         
         #region Static
-        
-        public static GameObject GetObjectBy(Item itemType)
+
+        // TODO: rename to real items
+        private static GameObject GetObjectBy(ItemType itemType)
         {
             return itemType switch
             {
-                Item.PoisonedBurger => Resources.Load("PoisonedBurger") as GameObject,
-                Item.Obstacle => Resources.Load("PoisonedBurger") as GameObject,
-                Item.DamagePotion => Resources.Load("PoisonedBurger") as GameObject,
+                ItemType.PoisonedBurger => Resources.Load("PoisonedBurger") as GameObject,
+                ItemType.Obstacle => Resources.Load("PoisonedBurger") as GameObject,
+                ItemType.DamagePotion => Resources.Load("PoisonedBurger") as GameObject,
                 _ => throw new ArgumentException("Item null reference exception or wrong item")
             };
         }
 
-        public static void InstantiateWithCallback(
-            MovableItem movableItem, 
-            Vector2 position, 
-            Action returnCallback,
-            Action destroyCallback)
+        public static MovableItem InstantiateItem(Enum.ItemType itemTypeType)
         {
-            Instantiate(movableItem, position, Quaternion.identity);
-            movableItem.returnCallback = returnCallback;
-            movableItem.destroyCallback = destroyCallback;
+            GetObjectBy(itemTypeType).TryGetComponent(out MovableItem movableItem);
+            return Instantiate(movableItem, GameManager.Instance.MousePosition, Quaternion.identity);
         }
         
         #endregion
@@ -57,16 +59,23 @@ namespace Items.Base
             if (Input.GetButtonDown("Fire2"))
             {
                 _followingMouse = false;
-                returnCallback.Invoke();
+                Destroy(gameObject);
+                _returnCallback?.Invoke();
+                _returnCallback = null;
             }
-            
         }
 
         protected override void OnMouseDown()
         {
             _followingMouse = false;
-            destroyCallback.Invoke();
+            _clearItemSlotCallback?.Invoke();
+            _clearItemSlotCallback = null;
         }
         
+        public void AttachCallbacks(Action returnCallback, Action clearItemSlotCallback)
+        {
+            _returnCallback = returnCallback;
+            _clearItemSlotCallback = clearItemSlotCallback;
+        }
     }
 }

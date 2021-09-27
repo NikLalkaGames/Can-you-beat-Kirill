@@ -1,6 +1,5 @@
-﻿using Common;
-using Items;
-using Items.Base;
+﻿using Items.Base;
+using Items.Enum;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,7 +8,7 @@ namespace UI
 {
     public class UIItem : MonoBehaviour, IPointerDownHandler
     {
-        [SerializeField] private Item itemType;
+        [SerializeField] private ItemType itemType;
         
         private RectTransform _rectTransform;
         private Image _image;
@@ -31,19 +30,16 @@ namespace UI
         {
             _image.color = _fadedColor;
             
-            MovableItem.InstantiateWithCallback(
-                MovableItem.GetObjectBy(itemType).GetComponent<MovableItem>(),
-                GameManager.Instance.MousePosition, 
-                ReturnCallback,
-                DestroyCallback);
+            var movableItem = MovableItem.InstantiateItem(itemType);
+            movableItem.AttachCallbacks(Return, ClearItemSlot);
         }
 
-        private void ReturnCallback()
+        private void Return()
         {
             _image.color = _originColor;
         }
 
-        private void DestroyCallback()
+        private void ClearItemSlot()
         {
             Destroy(gameObject);
         }

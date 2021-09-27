@@ -1,6 +1,6 @@
-﻿namespace Items
+﻿namespace Items.Enum
 {
-    public enum Item
+    public enum ItemType
     {
         PoisonedBurger,
         Obstacle,
