@@ -1,4 +1,5 @@
-﻿using Items.CoinManagement;
+﻿using System;
+using Items.CoinManagement;
 using UnityEngine;
 
 namespace Common
@@ -13,13 +14,25 @@ namespace Common
 
 
         [SerializeField] private bool testMode;
+        
+        
+        #region InGame variables
+        
+        public Vector2 MousePosition { get; private set; }
+
+        private Camera _camera;
+
+        #endregion
 
         private void Awake() 
         {
+            // Application.targetFrameRate = 60;
+            
             Debug.Log("GameManager Awake");
             if (Instance == null) Instance = this;
-            Application.targetFrameRate = 60;
             DontDestroyOnLoad(gameObject);
+            
+            _camera = Camera.main;
         }
 
         private void Start()
@@ -37,6 +50,11 @@ namespace Common
         private void RefreshPlayerData()
         {
 
+        }
+
+        private void Update()
+        {
+            MousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
         }
     }
 }
