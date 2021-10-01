@@ -149,5 +149,9 @@ fabric.properties
 
 #
 [Aa]ssets/Scenes
+[Aa]ssets/Scenes/*
 ![Aa]ssets/Scenes/MainScene.unity
 ![Aa]ssets/Scenes/MainScene.unity.meta
+
+# Visual Studio
+.vsconfig
