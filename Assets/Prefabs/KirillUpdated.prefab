@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 9058232592886587739}
   - component: {fileID: 9058232592886587684}
   - component: {fileID: 9058232592044223771}
-  - component: {fileID: 8234323922796173220}
-  - component: {fileID: 8234323922796173221}
+  - component: {fileID: 2208736104122808588}
+  - component: {fileID: 4832183311855213578}
   m_Layer: 0
   m_Name: KirillUpdated
   m_TagString: Untagged
@@ -196,7 +196,7 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &8234323922796173220
+--- !u!114 &2208736104122808588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,12 +205,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8234323921956232034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f61465831a4778448a667b5b80580b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 0}
---- !u!114 &8234323922796173221
+--- !u!114 &4832183311855213578
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,17 +217,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8234323921956232034}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 847a14d4dc9cc43679ab34fc78e0182f, type: 3}
+  m_Script: {fileID: 11500000, guid: 32c9ddb498c88ef4dba560083beed7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
-  repathRate: 0.5
-  canSearch: 1
-  canMove: 1
-  speed: 1
-  orientation: 1
-  enableRotation: 1
-  rotationSpeed: 10
-  interpolatePathSwitches: 1
-  switchPathInterpolationSpeed: 5
-  targetCompatibility: {fileID: 0}
+  targetCollection: {fileID: 0}
+  speed: 200
+  nextWaypointDistance: 3
+  updatePathInterval: 0.5
+  findShortestInterval: 2

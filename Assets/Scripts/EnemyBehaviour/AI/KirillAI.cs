@@ -6,13 +6,19 @@ using Pathfinding;
 public class KirillAI : MonoBehaviour
 {
 
-    public Transform target;
+    public Transform targetCollection;
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
+    public float updatePathInterval = 0.5f;
+    public float findShortestInterval = 2f;
 
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
+    Transform closestTarget;
+    float minLength;
+    Transform target;
+    int remaningTargetsCount;
 
     Seeker seeker;
     Rigidbody2D rb;
@@ -23,13 +29,17 @@ public class KirillAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
-        InvokeRepeating("UpdatePath", 0f, 0.5f);
+        InvokeRepeating("UpdatePath", 0f, updatePathInterval);
+        InvokeRepeating("FindShortest", 0f, findShortestInterval);
     }
 
     void UpdatePath()
     {
-        if(seeker.IsDone())
+        if (seeker.IsDone())
+        {
             seeker.StartPath(rb.position, target.position, OnPathComplete);
+        }
+        
     }
 
     void OnPathComplete(Path p)
@@ -40,7 +50,28 @@ public class KirillAI : MonoBehaviour
             currentWaypoint = 0;
         }
     }
-    // Update is called once per frame
+    void FindShortest()
+    {
+        minLength = 100000f;
+        remaningTargetsCount = targetCollection.childCount;
+        foreach (Transform tmp_target in targetCollection)
+        {
+            RequestManager.RequestPath(rb.position, tmp_target, OnTmpPathComplete);
+        }
+    }
+    void OnTmpPathComplete(Transform tmpTarget, float length)
+    {
+        remaningTargetsCount--;
+        if (length < minLength)
+        {
+            minLength = length;
+            closestTarget = tmpTarget;
+        }
+        if (remaningTargetsCount == 0)
+        {
+            target = closestTarget;
+        }
+    }
     void FixedUpdate()
     {
         if (path == null)
