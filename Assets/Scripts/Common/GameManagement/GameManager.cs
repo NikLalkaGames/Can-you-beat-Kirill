@@ -1,8 +1,7 @@
-﻿using System;
-using Items.CoinManagement;
+﻿using Items.CoinManagement;
 using UnityEngine;
 
-namespace Common
+namespace Common.GameManagement
 {
     public class GameManager : MonoBehaviour
     {

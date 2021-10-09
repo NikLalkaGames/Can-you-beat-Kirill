@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace Items.ItemContainer
+namespace Common.Containers
 {
     [CreateAssetMenu(menuName = "Items/ItemCollection")]
     public class ItemCollection : ScriptableObject
     {
-        public GameObject[] itemPrefabs;
+        public GameObject[] _itemPrefabs;
     }
 }

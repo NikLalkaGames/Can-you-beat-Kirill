@@ -10,7 +10,7 @@ namespace EnemyBehaviour.Interaction
 
         [SerializeField] private float damageValue;
 
-        [SerializeField] private AstarPath pathfinder;
+        // [SerializeField] private AstarPath pathfinder;
 
         private Bounds _bounds;
         
@@ -28,7 +28,7 @@ namespace EnemyBehaviour.Interaction
         private void OnMouseDown()
         {
             health.Reduce(damageValue);
-            pathfinder.UpdateGraphs(_bounds);
+            // pathfinder.UpdateGraphs(_bounds);
         }
     }
 }

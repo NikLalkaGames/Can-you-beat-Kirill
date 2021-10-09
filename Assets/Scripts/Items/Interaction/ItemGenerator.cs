@@ -1,5 +1,5 @@
 ﻿using System;
-using Items.ItemContainer;
+using Common.Containers;
 using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -16,7 +16,7 @@ namespace Items.Interaction
 
         private void Awake()
         {
-            _itemPrefabs = itemCollection.itemPrefabs;
+            _itemPrefabs = itemCollection._itemPrefabs;
         }
 
         #region Item changing logic
