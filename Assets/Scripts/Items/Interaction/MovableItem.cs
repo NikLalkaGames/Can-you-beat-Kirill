@@ -1,5 +1,6 @@
 ﻿using System;
 using Common;
+using Common.Events;
 using Common.GameManagement;
 using Items.Base;
 using MonsterLove.StateMachine;
@@ -28,6 +29,8 @@ namespace Items.Interaction
         private Action _returnCallback;
 
         private Action _updateItemCallback;
+        
+        [SerializeField] private GameEvent OnItemPlaced;
         
         // Positioning  
         
@@ -79,6 +82,10 @@ namespace Items.Interaction
 
         private void FollowsTheMouse_OnMouseDown()
         {
+            Debug.Log("Item placed");
+            
+            if (OnItemPlaced != null) OnItemPlaced.Raise();
+            
             _updateItemCallback?.Invoke();
             _updateItemCallback = null;
             _fsm.ChangeState(States.World);
@@ -98,7 +105,7 @@ namespace Items.Interaction
             _returnCallback = returnCallback;
             _updateItemCallback = updateItemCallback;
         }
-        
+
         #endregion
     }
 }
