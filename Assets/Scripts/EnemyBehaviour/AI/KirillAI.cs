@@ -19,6 +19,7 @@ public class KirillAI : MonoBehaviour
     float minLength;
     Transform target;
     int remaningTargetsCount;
+    float distanceToWaypoint;
 
     Seeker seeker;
     Rigidbody2D rb;
@@ -84,14 +85,16 @@ public class KirillAI : MonoBehaviour
             reachedEndOfPath = false;
         }
 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
+        if (!reachedEndOfPath)
+        {
+            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            Vector2 force = direction * speed * Time.deltaTime;
 
-        rb.AddForce(force);
+            rb.AddForce(force);
+            distanceToWaypoint = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+        }
 
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-        if (distance < nextWaypointDistance)
+        if (distanceToWaypoint < nextWaypointDistance && !reachedEndOfPath)
         {
             currentWaypoint++;
         }
