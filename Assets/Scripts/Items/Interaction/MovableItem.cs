@@ -14,27 +14,27 @@ namespace Items.Interaction
         
         #region StateMachine definition
 
-        private enum States
+        protected enum States
         {
             FollowsTheMouse,
             World
         }
 
-        private StateMachine<States, StateDriverUnity> _fsm;
+        protected StateMachine<States, StateDriverUnity> Fsm;
         
         #endregion
 
         // UI callbacks
-        
+
         private Action _returnCallback;
 
         private Action _updateItemCallback;
         
-        [SerializeField] private GameEvent OnItemPlaced;
+        [SerializeField] protected GameEvent OnItemPlaced;
         
         // Positioning  
         
-        private Transform _transform;
+        protected Transform _transform;
         
         #endregion
 
@@ -44,31 +44,31 @@ namespace Items.Interaction
         {
             base.Start();
             _transform = transform;
-            _fsm = new StateMachine<States, StateDriverUnity>(this);
-            _fsm.ChangeState(States.FollowsTheMouse);
+            Fsm = new StateMachine<States, StateDriverUnity>(this);
+            Fsm.ChangeState(States.FollowsTheMouse);
         }
         
-        private void Update()
+        protected void Update()
         {
-            _fsm.Driver.Update.Invoke();
+            Fsm.Driver.Update.Invoke();
         }
         
         protected override void OnMouseDown()
         {
             base.OnMouseDown();
-            _fsm.Driver.OnMouseDown.Invoke();
+            Fsm.Driver.OnMouseDown.Invoke();
         }
 
         #endregion
         
         #region State Machine implementation
 
-        private void FollowsTheMouse_Enter()
+        protected void FollowsTheMouse_Enter()
         {
             Debug.Log($"{_name} enters follows the mouse state");
         }
         
-        private void FollowsTheMouse_Update()
+        protected void FollowsTheMouse_Update()
         {            
             _transform.position = GameManager.Instance.MousePosition;
 
@@ -80,7 +80,7 @@ namespace Items.Interaction
             }
         }
 
-        private void FollowsTheMouse_OnMouseDown()
+        protected void FollowsTheMouse_OnMouseDown()
         {
             Debug.Log("Item placed");
             
@@ -88,10 +88,10 @@ namespace Items.Interaction
             
             _updateItemCallback?.Invoke();
             _updateItemCallback = null;
-            _fsm.ChangeState(States.World);
+            Fsm.ChangeState(States.World);
         }
 
-        private void World_Enter()
+        protected void World_Enter()
         {
             Debug.Log($"{_name} enters world state");
         }
