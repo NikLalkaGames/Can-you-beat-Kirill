@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Common.Events;
+using UnityEngine;
 
 namespace Common.Variables
 {
@@ -7,39 +8,38 @@ namespace Common.Variables
     {
         public float InitialValue;
 
-        //[NonSerialized]
-        public float Value;
+        public float MaxValue;
+        
+        [SerializeField]
+        private float _value;
+
+        public float Value
+        {
+            get => _value;
+            set
+            {
+                _value = Mathf.Clamp(value, 0, MaxValue);
+                OnValueChanged.Raise();
+            }
+        }
+
+        public GameEvent OnValueChanged;
 
         protected void Awake()
         {
             Value = InitialValue;
         }
 
-        protected void OnDestroy()
+        protected void OnDisable()
         {
             Value = InitialValue;
         }
         
-        public virtual void SetValue(float value)
+        protected void OnDestroy()
         {
-            Value = value;
+            Value = InitialValue;
         }
 
-        public virtual void SetValue(FloatVariable value)
-        {
-            Value = value.Value;
-        }
-
-        public virtual void ApplyChange(float amount)
-        {
-            Value += amount;
-        }
-
-        public virtual void ApplyChange(FloatVariable amount)
-        {
-            Value += amount.Value;
-        }
-        
     }
     
 }

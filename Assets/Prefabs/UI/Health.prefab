@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10000/10000
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a6d881b6666afcb49aa05c533d2a32ad, type: 2}
   m_sharedMaterial: {fileID: 2209498957315621819, guid: a6d881b6666afcb49aa05c533d2a32ad, type: 2}
@@ -144,6 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8665551231977636354}
   - component: {fileID: 8665551231977636353}
+  - component: {fileID: 6633810523760295616}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -184,8 +185,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b44228b0fb2ed41b0d6fcacbcb3750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: {fileID: 11400000, guid: 8e29a7b4cebf2f040898ef845043d336, type: 2}
   tmProComponent: {fileID: 8665551231091548801}
   healthBar: {fileID: 5749896913281457611}
+--- !u!114 &6633810523760295616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8665551231977636355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af6e3fb921b4fbda8e8c42b1ecd8d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 747305287235cb54aa651c575199c047, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8665551231977636353}
+        m_TargetAssemblyTypeName: UI.UIHealth, Assembly-CSharp
+        m_MethodName: UpdateSlider
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8665551231977636353}
+        m_TargetAssemblyTypeName: UI.UIHealth, Assembly-CSharp
+        m_MethodName: UpdateText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &8665551230529642561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -291,7 +333,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4001875059247070602, guid: a7c56d98b57be104c84f4e281f0808e2, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4001875059247070602, guid: a7c56d98b57be104c84f4e281f0808e2, type: 3}
+      propertyPath: m_MaxValue
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 4198677683502822381, guid: a7c56d98b57be104c84f4e281f0808e2, type: 3}
       propertyPath: m_SizeDelta.x

@@ -9,11 +9,24 @@ namespace Common.Variables
     public class IntVariable : ScriptableObject
     {
         public int InitialValue;
+
+        public int MaxValue;
         
-        public int Value;
+        [SerializeField]
+        public int _value;
 
+        public int Value
+        {
+            get => _value;
+            set
+            {
+                _value = Mathf.Clamp(value, 0, MaxValue);
+                OnValueChanged.Raise();
+            }
+        }
+        
         public GameEvent OnValueChanged;
-
+        
         protected void Awake()
         {
             Value = InitialValue;
@@ -24,28 +37,11 @@ namespace Common.Variables
             Value = InitialValue;
         }
         
-        public void SetValue(int value)
+        protected void OnDestroy()
         {
-            Value = value;
-            OnValueChanged.Raise();
+            Value = InitialValue;
         }
 
-        public void SetValue(IntVariable value)
-        {
-            SetValue(value.Value);
-        }
-
-        public void ApplyChange(int amount)
-        {
-            Value += amount;
-            OnValueChanged.Raise();
-        }
-
-        public void ApplyChange(IntVariable amount)
-        {
-            ApplyChange(amount.Value);
-        }
-        
     }
 
 }

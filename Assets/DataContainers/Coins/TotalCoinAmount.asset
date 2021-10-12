@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 285ea468c30b4f7abc1c4d7a9e576b82, type: 3}
-  m_Name: TotalCoinNumber
+  m_Script: {fileID: 11500000, guid: 757dac91d94d40bfbaa382f8df91ffa9, type: 3}
+  m_Name: TotalCoinAmount
   m_EditorClassIdentifier: 
   InitialValue: 0
-  Value: 0
+  MaxValue: 9999
+  _value: 0
   OnValueChanged: {fileID: 11400000, guid: 446b7333802c3a543aa8c53dfff30dc0, type: 2}
-  coinPickUpValue: {fileID: 11400000, guid: 1c12cc303c482ca4b92ddee10fc7ec71, type: 2}

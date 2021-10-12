@@ -1,18 +1,17 @@
+﻿using Common.Variables;
 using UnityEngine;
 
 namespace EnemyBehaviour.Health
 {
-    public class BaseHealth : MonoBehaviour
+    public class UnitHealth : MonoBehaviour
     {
-        # region Fields
+        # region Variables
         
-        #region Health
+        #region HealthValues
         
-        [SerializeField] private float maxHealth;     // 1000
-
-        private float _healthValue;
+        public FloatVariable HP;
         
-        #endregion 
+        #endregion
         
         #region Statuses
         
@@ -31,29 +30,17 @@ namespace EnemyBehaviour.Health
         private float _invincibleTimer;
 
         #endregion
-        
-        # endregion
-        
-        #region Properties
 
-        protected float HealthValue
-        {
-            get => _healthValue;
-            private set => _healthValue = Mathf.Clamp(value, 0, MaxHealth);
-        }
-
-        protected float MaxHealth => maxHealth;
-        
         #endregion
-
+        
         # region Methods
-        
-        protected virtual void Start() => HealthValue = MaxHealth;
 
-        public virtual void Restore(float amount) =>
-            HealthValue += amount;
+        protected void Start() => HP.Value = HP.MaxValue;
+
+        public void Restore(float amount) =>
+            HP.Value += amount;
         
-        public virtual void TryToDamage(float amount)
+        public void TryToDamage(float amount)
         {
             if (_invincibleTimer >= 0) return;
 
@@ -63,14 +50,15 @@ namespace EnemyBehaviour.Health
             _invincibleTimer = timeInvincible;
         }
 
-        public virtual void Reduce(float amount) => 
-            HealthValue -= amount;
+        public void Reduce(float amount) => 
+            HP.Value -= amount;
 
-        protected virtual void FixedUpdate()
+        protected void FixedUpdate()
         {
             if (_invincibleTimer >= 0) _invincibleTimer -= Time.fixedDeltaTime;
         }
 
         # endregion
+        
     }
 }

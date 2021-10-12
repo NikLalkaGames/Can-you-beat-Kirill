@@ -123,8 +123,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _totalCoins: {fileID: 11400000, guid: 0e99cd45304a72b4683b274294968e0c, type: 2}
-  OnCoinPickedUp: {fileID: 11400000, guid: d9edf9a4f2a812e41bf1df8aff118e73, type: 2}
+  _coinPickUpValue: 1
   _leftAfterPick: 0
-  InternalListener:
-    m_PersistentCalls:
-      m_Calls: []
