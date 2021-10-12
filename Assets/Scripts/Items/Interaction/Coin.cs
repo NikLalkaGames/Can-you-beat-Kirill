@@ -12,13 +12,14 @@ namespace Items.Interaction
         [SerializeField] private IntVariable _totalCoins;
 
         [SerializeField] private GameEvent OnCoinPickedUp;
-        
-        protected override void OnMouseDown() =>
-            OnCoinPickedUp.Raise();
 
-        public void IncreaseAmount()
+        [SerializeField] private bool _leftAfterPick;
+
+        protected override void OnMouseDown()
         {
+            OnCoinPickedUp.Raise();
             _totalCoins.Value += _pickUpValue.Value;
+            gameObject.SetActive(_leftAfterPick);
         }
     }
 }
