@@ -2,24 +2,30 @@ using Common.Events;
 using Common.Variables;
 using Items.Interaction.Base;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Items.Interaction
 {
     public class Coin : InteractableItem
     {
-        [SerializeField] private IntVariable _pickUpValue;
-
-        [SerializeField] private IntVariable _totalCoins;
+        [SerializeField] private CoinValue _totalCoins;
 
         [SerializeField] private GameEvent OnCoinPickedUp;
 
         [SerializeField] private bool _leftAfterPick;
 
+        // [SerializeField] private UnityEvent InternalListener;
+
         protected override void OnMouseDown()
         {
+            _totalCoins.IncreaseAmount();
+            
             OnCoinPickedUp.Raise();
-            _totalCoins.Value += _pickUpValue.Value;
+            
             gameObject.SetActive(_leftAfterPick);
         }
+        
+        
+        
     }
 }

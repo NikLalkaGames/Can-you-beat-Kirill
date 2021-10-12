@@ -9,7 +9,7 @@ namespace UI
     {
         [SerializeField] private TextMeshProUGUI _coinUIValue;
         
-        [SerializeField] private IntVariable _totalCoins;
+        [SerializeField] private CoinValue _totalCoins;
         
         public void Start()
         {

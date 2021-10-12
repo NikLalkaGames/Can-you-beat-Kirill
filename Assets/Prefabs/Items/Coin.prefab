@@ -97,10 +97,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0046188533, y: 0.051373273}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.07777778, y: 0.1}
     newSize: {x: 0.07, y: 0.09}
     adaptiveTilingThreshold: 0.5
@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2015304, y: 0.20427245}
+  m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
 --- !u!114 &675720010496213351
 MonoBehaviour:
@@ -122,7 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e357d9feb60e8c845a7d9ba43e999c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickUpValue: {fileID: 11400000, guid: 1c12cc303c482ca4b92ddee10fc7ec71, type: 2}
-  _totalCoins: {fileID: 11400000, guid: edc3d5656a6a55547a630f55f4566804, type: 2}
+  _totalCoins: {fileID: 11400000, guid: 0e99cd45304a72b4683b274294968e0c, type: 2}
   OnCoinPickedUp: {fileID: 11400000, guid: d9edf9a4f2a812e41bf1df8aff118e73, type: 2}
-  _deactivateOnPicked: 0
+  _leftAfterPick: 0
+  InternalListener:
+    m_PersistentCalls:
+      m_Calls: []

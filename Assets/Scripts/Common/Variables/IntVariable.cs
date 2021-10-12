@@ -11,12 +11,12 @@ namespace Common.Variables
         //[NonSerialized]
         public int Value;
 
-        private void Awake()
+        protected void Awake()
         {
             Value = InitialValue;
         }
 
-        private void OnDisable()
+        protected void OnDisable()
         {
             Value = InitialValue;
         }
