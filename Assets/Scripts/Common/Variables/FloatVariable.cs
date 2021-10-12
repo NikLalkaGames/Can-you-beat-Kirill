@@ -10,15 +10,36 @@ namespace Common.Variables
         //[NonSerialized]
         public float Value;
 
-        private void Awake()
+        protected void Awake()
         {
             Value = InitialValue;
         }
 
-        private void OnDestroy()
+        protected void OnDestroy()
         {
             Value = InitialValue;
         }
+        
+        public virtual void SetValue(float value)
+        {
+            Value = value;
+        }
+
+        public virtual void SetValue(FloatVariable value)
+        {
+            Value = value.Value;
+        }
+
+        public virtual void ApplyChange(float amount)
+        {
+            Value += amount;
+        }
+
+        public virtual void ApplyChange(FloatVariable amount)
+        {
+            Value += amount.Value;
+        }
+        
     }
     
 }

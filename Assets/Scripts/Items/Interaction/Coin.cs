@@ -10,17 +10,13 @@ namespace Items.Interaction
     {
         [SerializeField] private CoinValue _totalCoins;
 
-        [SerializeField] private GameEvent OnCoinPickedUp;
-
         [SerializeField] private bool _leftAfterPick;
 
         // [SerializeField] private UnityEvent InternalListener;
 
         protected override void OnMouseDown()
         {
-            _totalCoins.IncreaseAmount();
-            
-            OnCoinPickedUp.Raise();
+            _totalCoins.Increase();
             
             gameObject.SetActive(_leftAfterPick);
         }

@@ -1,5 +1,7 @@
 ﻿using System;
+using Common.Events;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Common.Variables
 {
@@ -7,9 +9,10 @@ namespace Common.Variables
     public class IntVariable : ScriptableObject
     {
         public int InitialValue;
-
-        //[NonSerialized]
+        
         public int Value;
+
+        public GameEvent OnValueChanged;
 
         protected void Awake()
         {
@@ -21,6 +24,27 @@ namespace Common.Variables
             Value = InitialValue;
         }
         
+        public void SetValue(int value)
+        {
+            Value = value;
+            OnValueChanged.Raise();
+        }
+
+        public void SetValue(IntVariable value)
+        {
+            SetValue(value.Value);
+        }
+
+        public void ApplyChange(int amount)
+        {
+            Value += amount;
+            OnValueChanged.Raise();
+        }
+
+        public void ApplyChange(IntVariable amount)
+        {
+            ApplyChange(amount.Value);
+        }
         
     }
 

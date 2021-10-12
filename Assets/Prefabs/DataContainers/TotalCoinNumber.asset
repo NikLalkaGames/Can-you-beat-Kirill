@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialValue: 0
   Value: 0
+  OnValueChanged: {fileID: 11400000, guid: 446b7333802c3a543aa8c53dfff30dc0, type: 2}
   coinPickUpValue: {fileID: 11400000, guid: 1c12cc303c482ca4b92ddee10fc7ec71, type: 2}

@@ -8,15 +8,11 @@ namespace Common.Variables
     {
         public IntVariable coinPickUpValue;
 
-        public void IncreaseAmount()
+        public void Increase()
         {
-            Value += coinPickUpValue.InitialValue;
+            ApplyChange(coinPickUpValue);
         }
 
-        public void DecreaseAmount()
-        {
-            Value -= coinPickUpValue.InitialValue;
-        }
         
     }
 }
