@@ -1,15 +1,14 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Items.Base
+namespace Items.Interaction.Base
 {
     public class InteractableItem : MonoBehaviour
     {
-        protected string _name;
+        protected string Name;
         
         protected virtual void Start()
         {
-            _name = gameObject.name;
+            Name = gameObject.name;
             
             if (!TryGetComponent(out Collider2D collider2D)) 
                 Debug.LogError("Need to attach collider to gameObject to interact");
@@ -17,12 +16,12 @@ namespace Items.Base
 
         protected virtual void OnMouseUpAsButton()
         {
-            Debug.Log($"MouseUp on {_name}");
+            Debug.Log($"MouseUp on {Name}");
         }
 
         protected virtual void OnMouseDown()
         {
-            Debug.Log($"MouseDown on {_name}");
+            Debug.Log($"MouseDown on {Name}");
         }
     }
 }

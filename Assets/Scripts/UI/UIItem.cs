@@ -1,8 +1,8 @@
 ﻿using System;
 using Common;
 using Common.GameManagement;
-using Items.Base;
 using Items.Interaction;
+using Items.Interaction.Base;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

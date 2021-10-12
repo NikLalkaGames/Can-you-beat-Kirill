@@ -10,10 +10,8 @@ namespace Common.Events
 
         public void Raise()
         {
-            foreach (var listener in _listeners)
-            {
-                listener.OnEventRaised();
-            }
+            for(int i = _listeners.Count -1; i >= 0; i--)
+                _listeners[i].OnEventRaised();
         }
 
         public void RegisterListener(GameEventListener listener)

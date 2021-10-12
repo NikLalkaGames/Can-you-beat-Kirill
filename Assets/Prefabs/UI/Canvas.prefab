@@ -41,8 +41,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 298.0637, y: 0}
-  m_SizeDelta: {x: 596.1274, y: 0}
+  m_AnchoredPosition: {x: 298.5637, y: 0}
+  m_SizeDelta: {x: 597.1274, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &256198944
 CanvasRenderer:
@@ -578,18 +578,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 453338427445688384}
     m_Modifications:
-    - target: {fileID: 5919981086262861523, guid: 6173b12643ca0e7478db83bd1fe04a66, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 53.2324
-      objectReference: {fileID: 0}
-    - target: {fileID: 5919981086262861523, guid: 6173b12643ca0e7478db83bd1fe04a66, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -26.61669
-      objectReference: {fileID: 0}
-    - target: {fileID: 5919981086262861532, guid: 6173b12643ca0e7478db83bd1fe04a66, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5919981086535709684, guid: 6173b12643ca0e7478db83bd1fe04a66, type: 3}
       propertyPath: m_Name
       value: CoinValueWithImage
@@ -890,7 +878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9107161622574885667, guid: 24e5b556ea850d74a88851493535a005, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 596.1274
+      value: 597.1274
       objectReference: {fileID: 0}
     - target: {fileID: 9107161622574885667, guid: 24e5b556ea850d74a88851493535a005, type: 3}
       propertyPath: m_SizeDelta.y
@@ -898,7 +886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9107161622574885667, guid: 24e5b556ea850d74a88851493535a005, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 298.0637
+      value: 298.5637
       objectReference: {fileID: 0}
     - target: {fileID: 9107161622574885667, guid: 24e5b556ea850d74a88851493535a005, type: 3}
       propertyPath: m_AnchoredPosition.y

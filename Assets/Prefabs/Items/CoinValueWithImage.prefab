@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -15.805, y: -0.00012207}
-  m_SizeDelta: {x: 31.6092, y: 31.3618}
+  m_AnchoredPosition: {x: -26.61669, y: -0.00012207}
+  m_SizeDelta: {x: 53.2324, y: 31.3618}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5919981086262861533
 CanvasRenderer:
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -218,6 +218,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5919981086535709685}
+  - component: {fileID: 1512730241}
+  - component: {fileID: 1512730242}
   m_Layer: 5
   m_Name: CoinValueWithImage
   m_TagString: Untagged
@@ -246,3 +248,45 @@ RectTransform:
   m_AnchoredPosition: {x: 93.4, y: -178.5}
   m_SizeDelta: {x: 171.46, y: 31.362}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1512730241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5919981086535709684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c9dc516d0c48646955996f49d34416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coinUIValue: {fileID: 5919981086262861532}
+  _totalCoins: {fileID: 11400000, guid: edc3d5656a6a55547a630f55f4566804, type: 2}
+--- !u!114 &1512730242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5919981086535709684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af6e3fb921b4fbda8e8c42b1ecd8d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: d9edf9a4f2a812e41bf1df8aff118e73, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1512730241}
+        m_TargetAssemblyTypeName: UI.UICoin, Assembly-CSharp
+        m_MethodName: UpdateCoins
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

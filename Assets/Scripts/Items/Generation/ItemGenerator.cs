@@ -1,10 +1,9 @@
-﻿using System;
-using Common.Containers;
+﻿using Common.Containers;
 using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Items.Interaction
+namespace Items.Generation
 {
     public class ItemGenerator : MonoBehaviour
     {

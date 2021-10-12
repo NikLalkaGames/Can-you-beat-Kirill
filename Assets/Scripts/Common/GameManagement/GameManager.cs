@@ -1,5 +1,4 @@
-﻿using Items.CoinManagement;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Common.GameManagement
 {
@@ -8,8 +7,6 @@ namespace Common.GameManagement
         public static GameManager Instance { get; private set; } = null;
 
         [SerializeField] private SceneLoader sceneLoader;
-
-        [SerializeField] private CoinManager coinManager;
 
 
         [SerializeField] private bool testMode;
@@ -43,9 +40,9 @@ namespace Common.GameManagement
 
         public void RefreshGamingStats()
         {
-            CoinManager.Instance.CoinValue = 0;
+            
         }
-
+        
         private void RefreshPlayerData()
         {
 

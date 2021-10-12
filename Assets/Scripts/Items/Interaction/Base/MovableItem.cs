@@ -1,12 +1,10 @@
 ﻿using System;
-using Common;
 using Common.Events;
 using Common.GameManagement;
-using Items.Base;
 using MonsterLove.StateMachine;
 using UnityEngine;
 
-namespace Items.Interaction
+namespace Items.Interaction.Base
 {
     public class MovableItem : InteractableItem
     {
@@ -65,7 +63,7 @@ namespace Items.Interaction
 
         protected void FollowsTheMouse_Enter()
         {
-            Debug.Log($"{_name} enters follows the mouse state");
+            Debug.Log($"{Name} enters follows the mouse state");
         }
         
         protected void FollowsTheMouse_Update()
@@ -93,7 +91,7 @@ namespace Items.Interaction
 
         protected void World_Enter()
         {
-            Debug.Log($"{_name} enters world state");
+            Debug.Log($"{Name} enters world state");
         }
         
         #endregion

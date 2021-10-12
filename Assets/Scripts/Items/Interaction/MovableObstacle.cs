@@ -1,5 +1,6 @@
 ﻿
 using System;
+using Items.Interaction.Base;
 
 namespace Items.Interaction
 {
