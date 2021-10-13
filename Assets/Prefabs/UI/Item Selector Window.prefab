@@ -41,8 +41,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 295.5637, y: 0}
-  m_SizeDelta: {x: 591.1274, y: 0}
+  m_AnchoredPosition: {x: 288.0637, y: 0}
+  m_SizeDelta: {x: 576.1274, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &256198944
 CanvasRenderer:
@@ -379,8 +379,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 611975496296292741}
-        m_TargetAssemblyTypeName: Items.Interaction.ItemGenerator, Assembly-CSharp
-        m_MethodName: UpdateItems
+        m_TargetAssemblyTypeName: Items.Generation.ItemGenerator, Assembly-CSharp
+        m_MethodName: UpdateItemsByPrice
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -820,6 +820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fcb57946b949b99e79799fa526f17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _totalCoins: {fileID: 11400000, guid: 0e99cd45304a72b4683b274294968e0c, type: 2}
+  _refreshCost: 5
   itemCollection: {fileID: 11400000, guid: 99d1477dc5b62aa4fb0cc34ffaf0a1ff, type: 2}
   uiItemTransforms:
   - {fileID: 9107161620755885974}
@@ -1081,8 +1083,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 295.5637, y: 0}
-  m_SizeDelta: {x: 591.1274, y: 0}
+  m_AnchoredPosition: {x: 288.0637, y: 0}
+  m_SizeDelta: {x: 576.1274, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9107161622574885695
 MonoBehaviour:
@@ -1268,6 +1270,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9107161622574885667}
     m_Modifications:
+    - target: {fileID: 6949027448066205904, guid: 121eb16457c719f4dab6f4ec024dde92, type: 3}
+      propertyPath: _itemPrice
+      value: 
+      objectReference: {fileID: 2940963606874250524}
+    - target: {fileID: 6949027448066205904, guid: 121eb16457c719f4dab6f4ec024dde92, type: 3}
+      propertyPath: _totalCoins
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e99cd45304a72b4683b274294968e0c, type: 2}
     - target: {fileID: 8198430256491163401, guid: 121eb16457c719f4dab6f4ec024dde92, type: 3}
       propertyPath: m_Name
       value: ItemContainer (2)
@@ -1465,6 +1475,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 529677238572011993, guid: 005ca807e66d1544a87dec4ab8bd54dc, type: 3}
   m_PrefabInstance: {fileID: 826770660194735971}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &873853551676877715 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 529677237234351344, guid: 005ca807e66d1544a87dec4ab8bd54dc, type: 3}
+  m_PrefabInstance: {fileID: 826770660194735971}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1127465472162381980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1472,6 +1493,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9107161622574885667}
     m_Modifications:
+    - target: {fileID: 6949027448066205904, guid: 121eb16457c719f4dab6f4ec024dde92, type: 3}
+      propertyPath: _itemPrice
+      value: 
+      objectReference: {fileID: 8074766731308695050}
     - target: {fileID: 8198430256491163401, guid: 121eb16457c719f4dab6f4ec024dde92, type: 3}
       propertyPath: m_Name
       value: ItemContainer
@@ -1574,6 +1599,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9107161622574885667}
     m_Modifications:
+    - target: {fileID: 6949027448066205904, guid: 121eb16457c719f4dab6f4ec024dde92, type: 3}
+      propertyPath: _itemPrice
+      value: 
+      objectReference: {fileID: 7238600905079315837}
+    - target: {fileID: 6949027448066205904, guid: 121eb16457c719f4dab6f4ec024dde92, type: 3}
+      propertyPath: _totalCoins
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e99cd45304a72b4683b274294968e0c, type: 2}
     - target: {fileID: 8198430256491163401, guid: 121eb16457c719f4dab6f4ec024dde92, type: 3}
       propertyPath: m_Name
       value: ItemContainer (1)
@@ -1771,6 +1804,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 529677238572011993, guid: 005ca807e66d1544a87dec4ab8bd54dc, type: 3}
   m_PrefabInstance: {fileID: 3425458612785504748}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2940963606874250524 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 529677237234351344, guid: 005ca807e66d1544a87dec4ab8bd54dc, type: 3}
+  m_PrefabInstance: {fileID: 3425458612785504748}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7146482051626328461
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1873,6 +1917,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 529677238572011993, guid: 005ca807e66d1544a87dec4ab8bd54dc, type: 3}
   m_PrefabInstance: {fileID: 7146482051626328461}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7238600905079315837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 529677237234351344, guid: 005ca807e66d1544a87dec4ab8bd54dc, type: 3}
+  m_PrefabInstance: {fileID: 7146482051626328461}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7739471165294520486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1880,6 +1935,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9107161622574885667}
     m_Modifications:
+    - target: {fileID: 6949027448066205904, guid: 121eb16457c719f4dab6f4ec024dde92, type: 3}
+      propertyPath: _itemPrice
+      value: 
+      objectReference: {fileID: 873853551676877715}
+    - target: {fileID: 6949027448066205904, guid: 121eb16457c719f4dab6f4ec024dde92, type: 3}
+      propertyPath: _totalCoins
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e99cd45304a72b4683b274294968e0c, type: 2}
     - target: {fileID: 8198430256491163401, guid: 121eb16457c719f4dab6f4ec024dde92, type: 3}
       propertyPath: m_Name
       value: ItemContainer (3)
@@ -2072,6 +2135,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 005ca807e66d1544a87dec4ab8bd54dc, type: 3}
+--- !u!114 &8074766731308695050 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 529677237234351344, guid: 005ca807e66d1544a87dec4ab8bd54dc, type: 3}
+  m_PrefabInstance: {fileID: 8599235547509900026}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8074766729962361635 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 529677238572011993, guid: 005ca807e66d1544a87dec4ab8bd54dc, type: 3}
@@ -2084,6 +2158,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 256198940}
     m_Modifications:
+    - target: {fileID: 529677237234351344, guid: 005ca807e66d1544a87dec4ab8bd54dc, type: 3}
+      propertyPath: m_text
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 529677238572011992, guid: 005ca807e66d1544a87dec4ab8bd54dc, type: 3}
       propertyPath: m_Name
       value: CoinFooter
