@@ -1,4 +1,6 @@
 ﻿using Common.Containers;
+using Common.Variables;
+using Items.Interaction.Base;
 using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -7,22 +9,41 @@ namespace Items.Generation
 {
     public class ItemGenerator : MonoBehaviour
     {
-        [SerializeField] private ItemCollection itemCollection;
+        // total amount of coins
+        [SerializeField] private IntVariable _totalCoins;
 
+        // refresh cost
+        [SerializeField] private int _refreshCost;
+        
+        // collection of all items available for movement in the game 
+        [SerializeField] private ItemCollection itemCollection;
+        
+        // cached available items
+        private MovableItem[] _items;
+        
+        // ui item transforms 
         [SerializeField] private Transform[] uiItemTransforms;
         
-        private GameObject[] _itemPrefabs;
 
         private void Awake()
         {
-            _itemPrefabs = itemCollection._itemPrefabs;
+            _items = itemCollection.ItemPrefabs;
         }
 
         #region Item changing logic
-        
+
         private void Start() => UpdateItems();
 
-        public void UpdateItems()
+        public void UpdateItemsByPrice()
+        {
+            if (_totalCoins.Value < _refreshCost) return;
+
+            UpdateItems();
+            
+            _totalCoins.Value -= _refreshCost;
+        }
+        
+        private void UpdateItems()
         {
             foreach (var itemTransform in uiItemTransforms)
             {
@@ -35,12 +56,13 @@ namespace Items.Generation
             var item = GenerateRandomItem();
             
             uiItemTransform.TryGetComponent(out UIItem uiItem);
+            
             uiItem.AttachData(item, UpdateItem);
         }
         
-        private GameObject GenerateRandomItem()
+        private MovableItem GenerateRandomItem()
         {
-            return _itemPrefabs[Random.Range(0, _itemPrefabs.Length)];
+            return _items[Random.Range(0, _items.Length)];
         }
 
         #endregion

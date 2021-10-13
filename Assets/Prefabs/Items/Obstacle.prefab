@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnItemPlaced: {fileID: 11400000, guid: 12e3827733f105e41ac1d2bfcbfa9460, type: 2}
+  Price: 2
 --- !u!114 &6253680976680733862
 MonoBehaviour:
   m_ObjectHideFlags: 0

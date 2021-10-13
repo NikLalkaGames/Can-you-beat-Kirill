@@ -123,3 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnItemPlaced: {fileID: 0}
+  Price: 1

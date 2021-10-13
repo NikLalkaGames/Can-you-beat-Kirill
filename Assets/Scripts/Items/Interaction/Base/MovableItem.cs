@@ -32,7 +32,11 @@ namespace Items.Interaction.Base
         
         // Positioning  
         
-        protected Transform _transform;
+        protected Transform Transform;
+        
+        // item price
+
+        public int Price;
         
         #endregion
 
@@ -41,7 +45,7 @@ namespace Items.Interaction.Base
         protected override void Start()
         {
             base.Start();
-            _transform = transform;
+            Transform = transform;
             Fsm = new StateMachine<States, StateDriverUnity>(this);
             Fsm.ChangeState(States.FollowsTheMouse);
         }
@@ -68,7 +72,7 @@ namespace Items.Interaction.Base
         
         protected void FollowsTheMouse_Update()
         {            
-            _transform.position = GameManager.Instance.MousePosition;
+            Transform.position = GameManager.Instance.MousePosition;
 
             if (Input.GetButtonDown("Fire2"))
             {

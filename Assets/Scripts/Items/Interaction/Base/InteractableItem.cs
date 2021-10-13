@@ -5,7 +5,7 @@ namespace Items.Interaction.Base
     public class InteractableItem : MonoBehaviour
     {
         protected string Name;
-        
+
         protected virtual void Start()
         {
             Name = gameObject.name;
