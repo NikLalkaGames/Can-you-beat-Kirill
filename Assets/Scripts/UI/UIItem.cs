@@ -14,7 +14,7 @@ namespace UI
     public class UIItem : MonoBehaviour, IPointerDownHandler
     {
         // MovableItem component reference reference
-        [NonSerialized] private MovableItem _movableItem;
+        private MovableItem _itemPrefab;
 
         // ui item sprite values
         private Image _image;
@@ -34,11 +34,11 @@ namespace UI
             _image = GetComponent<Image>();
         }
 
-        public void AttachData(MovableItem item, Action<Transform> updateItem)
+        public void AttachData(MovableItem itemPrefab, Action<Transform> updateItem)
         {
-            _movableItem = item;
+            _itemPrefab = itemPrefab;
             
-            _movableItem.TryGetComponent(out SpriteRenderer sr);
+            _itemPrefab.TryGetComponent(out SpriteRenderer sr);
             _image.sprite = sr.sprite;
             _image.color =  sr.color;                   
             _originColor = _image.color;                
@@ -48,18 +48,17 @@ namespace UI
 
             _updateItemCallback ??= updateItem;
             
-            _itemPrice.text = $"{_movableItem.Price}";
+            _itemPrice.text = $"{_itemPrefab.Price}";
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (_totalCoins.Value < _movableItem.Price) return;
-
-            _totalCoins.Value -= _movableItem.Price;
+            if (_totalCoins.Value < _itemPrefab.Price) return;
+            
             _image.color = _fadedColor;
 
-            Instantiate(_movableItem, GameManager.Instance.MousePosition, Quaternion.identity);
-            _movableItem.AttachCallbacks(ReturnItem, UpdateItem);
+            var runtimeMovableItem = Instantiate(_itemPrefab, GameManager.Instance.MousePosition, Quaternion.identity);
+            runtimeMovableItem.AttachCallbacks(ReturnItem, UpdateItem);
         }
 
         private void ReturnItem()
@@ -69,6 +68,7 @@ namespace UI
 
         private void UpdateItem()
         {
+            _totalCoins.Value -= _itemPrefab.Price;
             _updateItemCallback?.Invoke(transform);
         }
 
