@@ -4,6 +4,7 @@ using Common.Events;
 using Common.GameManagement;
 using MonsterLove.StateMachine;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace Items.Interaction.Base
 {
@@ -24,7 +25,6 @@ namespace Items.Interaction.Base
         #endregion
 
         // UI callbacks
-
         private Action _returnCallback;
 
         private Action _updateItemCallback;
@@ -32,13 +32,11 @@ namespace Items.Interaction.Base
         [SerializeField] protected GameEvent OnItemPlaced;
         
         // Positioning  
-        
         protected Transform Transform;
         
         // item price
-
         public int Price;
-        
+
         #endregion
 
         #region Base Monobehaviour
@@ -48,6 +46,7 @@ namespace Items.Interaction.Base
             base.Start();
             Transform = transform;
             Fsm = new StateMachine<States, StateDriverUnity>(this);
+            
             Fsm.ChangeState(States.FollowsTheMouse);
         }
         
