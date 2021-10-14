@@ -8,17 +8,7 @@ namespace Common.GameManagement
 
         [SerializeField] private SceneLoader sceneLoader;
 
-
         [SerializeField] private bool testMode;
-        
-        
-        #region InGame variables
-        
-        public Vector2 MousePosition { get; private set; }
-
-        private Camera _camera;
-
-        #endregion
 
         private void Awake() 
         {
@@ -27,8 +17,6 @@ namespace Common.GameManagement
             Debug.Log("GameManager Awake");
             if (Instance == null) Instance = this;
             DontDestroyOnLoad(gameObject);
-            
-            _camera = Camera.main;
         }
 
         private void Start()
@@ -36,21 +24,6 @@ namespace Common.GameManagement
             if (testMode) return;
             
             StartCoroutine(SceneLoader.Instance.LoadScene("MainMenu", 0.5f));
-        }
-
-        public void RefreshGamingStats()
-        {
-            
-        }
-        
-        private void RefreshPlayerData()
-        {
-
-        }
-
-        private void Update()
-        {
-            MousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
         }
     }
 }

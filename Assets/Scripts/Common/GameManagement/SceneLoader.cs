@@ -42,7 +42,6 @@ namespace Common.GameManagement
         {
             Debug.Log("Scene Loaded: " + loadedScene.name);
             SetActivePlayableScene(loadedScene);
-            GameManager.Instance.RefreshGamingStats();
         
             SceneManager.sceneLoaded -= OnSceneLoad;
             Debug.Log("OnSceneLoad actions has called successfully");
