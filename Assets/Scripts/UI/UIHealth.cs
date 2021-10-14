@@ -1,4 +1,5 @@
 using System;
+using Common.Variables;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,42 +8,27 @@ namespace UI
 {
     public class UIHealth : MonoBehaviour
     {
+        [SerializeField] private FloatVariable HP;
+        
         [SerializeField] private TextMeshProUGUI tmProComponent;
         
         [SerializeField] private Slider healthBar;
 
-        private float _maxValue;
-
-        public float MaxValue
-        {
-            get => _maxValue;
-            set
-            {   
-                _maxValue = value;              // for text
-                healthBar.maxValue = value;     // for health bar
-            }
-        }
-
         private void Start()
         {
-            if (healthBar is null)
-            {
-                Debug.LogError("You need to bind ghost health bar in field");
-            }
+            healthBar.maxValue = HP.MaxValue;
+            tmProComponent.text = $"{HP.MaxValue}/{HP.MaxValue}";
         }
 
-        #region Methods
-
-        public void Set(float value)
+        public void UpdateSlider()
         {
-            healthBar.value = value;
-            SetText($"{value}/{MaxValue}");
+            healthBar.value = HP.Value;
         }
-        
-        private void SetText(string text) =>
-            tmProComponent.text = text;
-        
-        #endregion
+
+        public void UpdateText()
+        {
+            tmProComponent.text = $"{HP.Value}/{HP.MaxValue}";
+        }
 
     }
 }

@@ -1,7 +1,11 @@
 ﻿using System;
+using CameraLogic;
 using Common;
-using Items.Base;
+using Common.GameManagement;
+using Common.Variables;
 using Items.Interaction;
+using Items.Interaction.Base;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,13 +14,19 @@ namespace UI
 {
     public class UIItem : MonoBehaviour, IPointerDownHandler
     {
-        // Item Data scriptable object reference
-        public GameObject itemPrefab;
+        // MovableItem component reference reference
+        private MovableItem _itemPrefab;
 
         // ui item sprite values
         private Image _image;
         private Color _originColor;
         private Color _fadedColor;
+        
+        // total amount of coins
+        [SerializeField] private IntVariable _totalCoins;
+        
+        // ui item price transform;
+        [SerializeField] private TextMeshProUGUI _itemPrice;
 
         private Action<Transform> _updateItemCallback;
         
@@ -25,11 +35,11 @@ namespace UI
             _image = GetComponent<Image>();
         }
 
-        public void AttachData(GameObject item, Action<Transform> updateItem)
+        public void AttachData(MovableItem itemPrefab, Action<Transform> updateItem)
         {
-            itemPrefab = item;
+            _itemPrefab = itemPrefab;
             
-            itemPrefab.TryGetComponent(out SpriteRenderer sr);
+            _itemPrefab.TryGetComponent(out SpriteRenderer sr);
             _image.sprite = sr.sprite;
             _image.color =  sr.color;                   
             _originColor = _image.color;                
@@ -38,15 +48,17 @@ namespace UI
             _fadedColor.a = 0.6f;
 
             _updateItemCallback ??= updateItem;
+            
+            _itemPrice.text = $"{_itemPrefab.Price}";
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (_totalCoins.Value < _itemPrefab.Price) return;
             _image.color = _fadedColor;
 
-            var item = Instantiate(itemPrefab, GameManager.Instance.MousePosition, Quaternion.identity);
-            item.TryGetComponent(out MovableItem movableItem);
-            movableItem.AttachCallbacks(ReturnItem, UpdateItem);
+            var runtimeMovableItem = Instantiate(_itemPrefab, Pointer.Position, Quaternion.identity);
+            runtimeMovableItem.AttachCallbacks(ReturnItem, UpdateItem);
         }
 
         private void ReturnItem()
@@ -56,7 +68,8 @@ namespace UI
 
         private void UpdateItem()
         {
-            _updateItemCallback?.Invoke(transform);
+            _totalCoins.Value -= _itemPrefab.Price;
+            _updateItemCallback.Invoke(transform);
         }
 
         private void OnDisable()

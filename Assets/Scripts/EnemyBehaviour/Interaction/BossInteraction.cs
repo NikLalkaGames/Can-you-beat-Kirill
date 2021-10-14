@@ -1,23 +1,18 @@
-﻿using EnemyBehaviour.Health;
+﻿using Common.Variables;
+using EnemyBehaviour.Health;
 using UnityEngine;
-using Pathfinding;
 
 namespace EnemyBehaviour.Interaction
 {
     public class BossInteraction : MonoBehaviour
     {
-        [SerializeField] private BossHealth health;
+        [SerializeField] private UnitHealth _health;
 
-        [SerializeField] private float damageValue;
+        [SerializeField] private float _damageValue;
 
-        [SerializeField] private AstarPath pathfinder;
-
-        private Bounds _bounds;
-        
         private void Awake()
         {
-            if (health is null) Debug.LogError("Need to attach health script");
-            _bounds = new Bounds( Vector3.zero, new Vector3(100, 100) );
+            if (_health is null) Debug.LogError("Need to attach health script");
         }
 
         private void Start()
@@ -27,8 +22,7 @@ namespace EnemyBehaviour.Interaction
 
         private void OnMouseDown()
         {
-            health.Reduce(damageValue);
-            pathfinder.UpdateGraphs(_bounds);
+            _health.Reduce(_damageValue);
         }
     }
 }
