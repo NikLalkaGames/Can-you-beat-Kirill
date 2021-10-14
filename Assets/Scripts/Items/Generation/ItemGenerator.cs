@@ -1,6 +1,7 @@
 ﻿using Common.Containers;
 using Common.Variables;
 using Items.Interaction.Base;
+using TMPro;
 using UI;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -15,11 +16,14 @@ namespace Items.Generation
         // refresh cost
         [SerializeField] private int _refreshCost;
         
+        // ui refresh items cost text
+        [SerializeField] private TextMeshProUGUI _uiRefreshCost;
+        
         // collection of all items available for movement in the game 
         [SerializeField] private ItemCollection itemCollection;
         
         // cached available items
-        private MovableItem[] _items;
+        private MovableItem[] _itemPrefabs;
         
         // ui item transforms 
         [SerializeField] private Transform[] uiItemTransforms;
@@ -27,13 +31,16 @@ namespace Items.Generation
 
         private void Awake()
         {
-            _items = itemCollection.ItemPrefabs;
+            _itemPrefabs = itemCollection.ItemPrefabs;
         }
 
         #region Item changing logic
 
-        private void Start() => UpdateItems();
-
+        private void Start()
+        {
+            _uiRefreshCost.text = $"{_refreshCost}";
+            UpdateItems();
+        }
         public void UpdateItemsByPrice()
         {
             if (_totalCoins.Value < _refreshCost) return;
@@ -62,7 +69,7 @@ namespace Items.Generation
         
         private MovableItem GenerateRandomItem()
         {
-            return _items[Random.Range(0, _items.Length)];
+            return _itemPrefabs[Random.Range(0, _itemPrefabs.Length)];
         }
 
         #endregion
