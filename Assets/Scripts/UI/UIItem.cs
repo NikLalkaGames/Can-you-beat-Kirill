@@ -1,4 +1,5 @@
 ﻿using System;
+using CameraLogic;
 using Common;
 using Common.GameManagement;
 using Common.Variables;
@@ -54,10 +55,9 @@ namespace UI
         public void OnPointerDown(PointerEventData eventData)
         {
             if (_totalCoins.Value < _itemPrefab.Price) return;
-            
             _image.color = _fadedColor;
 
-            var runtimeMovableItem = Instantiate(_itemPrefab, GameManager.Instance.MousePosition, Quaternion.identity);
+            var runtimeMovableItem = Instantiate(_itemPrefab, Pointer.Position, Quaternion.identity);
             runtimeMovableItem.AttachCallbacks(ReturnItem, UpdateItem);
         }
 
@@ -69,7 +69,7 @@ namespace UI
         private void UpdateItem()
         {
             _totalCoins.Value -= _itemPrefab.Price;
-            _updateItemCallback?.Invoke(transform);
+            _updateItemCallback.Invoke(transform);
         }
 
         private void OnDisable()

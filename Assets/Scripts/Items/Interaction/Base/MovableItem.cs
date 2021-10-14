@@ -1,4 +1,5 @@
 ﻿using System;
+using CameraLogic;
 using Common.Events;
 using Common.GameManagement;
 using MonsterLove.StateMachine;
@@ -57,7 +58,7 @@ namespace Items.Interaction.Base
         
         protected override void OnMouseDown()
         {
-            base.OnMouseDown();
+            // base.OnMouseDown();
             Fsm.Driver.OnMouseDown.Invoke();
         }
 
@@ -71,13 +72,14 @@ namespace Items.Interaction.Base
         }
         
         protected void FollowsTheMouse_Update()
-        {            
-            Transform.position = GameManager.Instance.MousePosition;
+        {
+            Transform.position = Pointer.Position;
 
             if (Input.GetButtonDown("Fire2"))
             {
-                _returnCallback?.Invoke();
+                _returnCallback.Invoke();
                 _returnCallback = null;
+                
                 Destroy(gameObject);
             }
         }
@@ -88,8 +90,9 @@ namespace Items.Interaction.Base
             
             if (OnItemPlaced != null) OnItemPlaced.Raise();
             
-            _updateItemCallback?.Invoke();
+            _updateItemCallback.Invoke();
             _updateItemCallback = null;
+            
             Fsm.ChangeState(States.World);
         }
 

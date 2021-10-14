@@ -14,11 +14,6 @@ namespace Items.Interaction.Base
                 Debug.LogError("Need to attach collider to gameObject to interact");
         }
 
-        protected virtual void OnMouseUpAsButton()
-        {
-            Debug.Log($"MouseUp on {Name}");
-        }
-
         protected virtual void OnMouseDown()
         {
             Debug.Log($"MouseDown on {Name}");
