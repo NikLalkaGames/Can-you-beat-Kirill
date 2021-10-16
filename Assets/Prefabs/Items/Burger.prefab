@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1254970299512197079}
   - component: {fileID: 1254970299512197078}
   - component: {fileID: 3204868358342418328}
+  - component: {fileID: 5911176885185173791}
   m_Layer: 0
   m_Name: Burger
-  m_TagString: Untagged
+  m_TagString: Heal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,3 +110,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3472222, y: 0.3472222}
   m_EdgeRadius: 0
+--- !u!114 &5911176885185173791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254970299512197081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f962ce07454ea1b22a35234d337a1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healValue: 10

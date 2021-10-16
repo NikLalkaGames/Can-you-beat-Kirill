@@ -28,14 +28,17 @@ namespace Items.Interaction.Base
         private Action _returnCallback;
 
         private Action _updateItemCallback;
-        
-        [SerializeField] protected GameEvent OnItemPlaced;
-        
+
         // Positioning  
         protected Transform Transform;
         
         // item price
         public int Price;
+        
+        // Constant strings
+        private static readonly int _leftMouseButton = 0;
+
+        private static readonly int _rightMouseButton = 1;
 
         #endregion
 
@@ -50,15 +53,19 @@ namespace Items.Interaction.Base
             Fsm.ChangeState(States.FollowsTheMouse);
         }
         
-        protected void Update()
+        protected virtual void Update()
         {
             Fsm.Driver.Update.Invoke();
         }
         
         protected override void OnMouseDown()
         {
-            // base.OnMouseDown();
             Fsm.Driver.OnMouseDown.Invoke();
+        }
+
+        protected void OnTriggerEnter2D(Collider2D other)
+        {
+            Fsm.Driver.OnTriggerEnter2D.Invoke(Collider2D);
         }
 
         #endregion
@@ -70,36 +77,54 @@ namespace Items.Interaction.Base
             Debug.Log($"{Name} enters follows the mouse state");
         }
         
-        protected void FollowsTheMouse_Update()
+        protected virtual void FollowsTheMouse_Update()
         {
             Transform.position = Pointer.Position;
 
-            if (Input.GetButtonDown("Fire2"))
+            if (Input.GetMouseButtonDown(_leftMouseButton))
             {
-                _returnCallback.Invoke();
-                _returnCallback = null;
-                
-                Destroy(gameObject);
+                OnLeftMouseButtonDown();
             }
-        }
 
-        protected void FollowsTheMouse_OnMouseDown()
-        {
-            Debug.Log("Item placed");
+            if (Input.GetMouseButtonDown(_rightMouseButton))
+            {
+                OnRightMouseButtonDown();
+            }
             
-            if (OnItemPlaced != null) OnItemPlaced.Raise();
-            
-            _updateItemCallback.Invoke();
-            _updateItemCallback = null;
-            
-            Fsm.ChangeState(States.World);
         }
 
         protected void World_Enter()
         {
             Debug.Log($"{Name} enters world state");
         }
+
+        protected virtual void World_OnTriggerEnter2D(Collider2D collider2D)
+        {
+            
+        }
         
+        #endregion
+
+        #region Inheritance Callbacks
+
+        protected virtual void OnLeftMouseButtonDown()
+        {
+            Debug.Log("Item placed");
+
+            _updateItemCallback.Invoke();
+            _updateItemCallback = null;
+            
+            Fsm.ChangeState(States.World);
+        }
+
+        protected virtual void OnRightMouseButtonDown()
+        {
+            _returnCallback.Invoke();
+            _returnCallback = null;
+                
+            Destroy(gameObject);
+        }
+
         #endregion
         
         #region External Methods
@@ -111,5 +136,6 @@ namespace Items.Interaction.Base
         }
 
         #endregion
+        
     }
 }

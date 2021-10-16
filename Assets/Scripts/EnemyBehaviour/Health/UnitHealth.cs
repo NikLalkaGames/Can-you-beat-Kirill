@@ -9,7 +9,7 @@ namespace EnemyBehaviour.Health
         
         #region HealthValues
         
-        public FloatVariable HP;
+        [SerializeField] private FloatVariable HP;
         
         #endregion
         

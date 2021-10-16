@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using Pathfinding;
 
@@ -91,6 +92,7 @@ public class KirillAI : MonoBehaviour
             Vector2 force = direction * speed * Time.deltaTime;
 
             rb.AddForce(force);
+
             distanceToWaypoint = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
         }
 

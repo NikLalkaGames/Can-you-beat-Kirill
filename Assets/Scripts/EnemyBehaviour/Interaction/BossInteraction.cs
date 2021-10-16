@@ -1,4 +1,5 @@
-﻿using Common.Variables;
+﻿using System;
+using Common.Variables;
 using EnemyBehaviour.Health;
 using UnityEngine;
 
@@ -13,11 +14,6 @@ namespace EnemyBehaviour.Interaction
         private void Awake()
         {
             if (_health is null) Debug.LogError("Need to attach health script");
-        }
-
-        private void Start()
-        {
-            
         }
 
         private void OnMouseDown()

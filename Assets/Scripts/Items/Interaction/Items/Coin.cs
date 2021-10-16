@@ -2,7 +2,6 @@ using Common.Events;
 using Common.Variables;
 using Items.Interaction.Base;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Items.Interaction
 {
@@ -13,8 +12,6 @@ namespace Items.Interaction
         [SerializeField] private int _coinPickUpValue;
         
         [SerializeField] private bool _leftAfterPick;
-
-        // [SerializeField] private UnityEvent InternalListener;
 
         protected override void OnMouseDown()
         {
