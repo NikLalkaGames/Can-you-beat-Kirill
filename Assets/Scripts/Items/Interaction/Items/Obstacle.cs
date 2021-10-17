@@ -10,6 +10,7 @@ namespace Items.Interaction
 {
     public class Obstacle : InteractableItem, IPointerBehaviour
     {
+        // constant
         [SerializeField] private float _rotationSpeed;
 
         [SerializeField] private GameEvent OnItemPlaced;
@@ -21,19 +22,13 @@ namespace Items.Interaction
 
         public void OnControlledByPointer(Transform controlledByPointerItem)
         {
-            var currentAngle= controlledByPointerItem.rotation.eulerAngles.z;
-            
-            if (Input.GetKey(KeyCode.Q))
+            if (Input.mouseScrollDelta.y != 0)
             {
-                currentAngle += _rotationSpeed;
+                var currentAngle = controlledByPointerItem.rotation.eulerAngles.z;
+                currentAngle += Input.mouseScrollDelta.y * _rotationSpeed;
                 controlledByPointerItem.rotation = Quaternion.Euler(0, 0, currentAngle);
             }
-            if (Input.GetKey(KeyCode.E))
-            {
-                currentAngle -= _rotationSpeed;
-                controlledByPointerItem.rotation = Quaternion.Euler(0, 0, currentAngle);
-            }
-            
+
         }
     }
 }
