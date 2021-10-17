@@ -9,11 +9,9 @@ namespace Items.Interaction
     {
         [SerializeField] private float _damageValue;
 
-        protected void OnTriggerEnter2D(Collider2D other)
+        protected void OnCollisionEnter2D(Collision2D other)
         {
-            Debug.Log("Enter OnTriggerEnter state");
-            
-            if (other.TryGetComponent(out UnitHealth unitHealth))
+            if (other.gameObject.TryGetComponent(out UnitHealth unitHealth))
             {
                 unitHealth.TryToDamage(_damageValue);
                 Destroy(gameObject);

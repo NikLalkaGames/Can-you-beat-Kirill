@@ -9,16 +9,13 @@ namespace Items.Interaction
     {
         [SerializeField] private float _healValue;
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.TryGetComponent(out UnitHealth unitHealth))
+            if (other.gameObject.TryGetComponent(out UnitHealth unitHealth))
             {
                 unitHealth.Restore(_healValue);
                 Destroy(gameObject);
-                
             }
         }
-        
-        
     }
 }
