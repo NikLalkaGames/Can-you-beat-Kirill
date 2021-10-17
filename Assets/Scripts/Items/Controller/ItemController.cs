@@ -4,6 +4,7 @@ using System.ComponentModel.Design.Serialization;
 using CameraLogic;
 using Google.Protobuf.WellKnownTypes;
 using Items.Interaction.Base;
+using Items.Interaction.Base.Interfaces;
 using MonsterLove.StateMachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,8 +16,12 @@ namespace Items.Controller
     {
         #region Fields
         
+        #region Singleton
+        
         public static ItemController Instance { get; private set; }
 
+        #endregion
+        
         #region StateMachine definition
 
         private enum States
@@ -31,38 +36,42 @@ namespace Items.Controller
 
         private InteractableItem _itemToPlace;
         
-        [SerializeField] private RectTransform _itemToShow;
+        [SerializeField] private Transform _itemToShow;
 
-        [SerializeField] private Image _itemToShowImage;
+        [SerializeField] private SpriteRenderer _itemToShowRenderer;
         
         // UI callbacks
-        private Action _returnCallback;
+        private Action _returnUiItem;
 
-        private Action _updateItemCallback;
+        private Action _updateUiItem;
+
+        private Action<Transform> _controlledByPointer;
         
         // Constant strings
         private static readonly int _leftMouseButton = 0;
 
         private static readonly int _rightMouseButton = 1;
         
-        // positioning
-
-        [SerializeField] private Canvas _canvas;
-
-        private Vector2 CanvasMousePosition
-        {
-            get
-            {
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                    (RectTransform) _canvas.transform, 
-                    Input.mousePosition,
-                    null,
-                    out Vector2 mousePosition);
-
-                return mousePosition;
-            }
-        }
+        #region UI mouse position
         
+        // private Canvas _canvas;
+        //
+        // private Vector2 CanvasMousePosition
+        // {
+        //     get
+        //     {
+        //         RectTransformUtility.ScreenPointToLocalPointInRectangle(
+        //             (RectTransform) _canvas.transform, 
+        //             Input.mousePosition,
+        //             null,
+        //             out Vector2 mousePosition);
+        //
+        //         return mousePosition;
+        //     }
+        // }
+        
+        #endregion
+
         #endregion
         
         #region MonoBehaviour Callbacks
@@ -74,6 +83,8 @@ namespace Items.Controller
         
         private void Start()
         {
+            ClearCurrentItem();
+            
             _fsm = new StateMachine<States, StateDriverUnity>(this);
             
             _fsm.ChangeState(States.Wait);
@@ -100,7 +111,9 @@ namespace Items.Controller
 
         private void FollowsTheMouse_Update()
         {
-            _itemToShow.anchoredPosition = CanvasMousePosition;
+            _itemToShow.position = Pointer.Position;
+            
+            _controlledByPointer?.Invoke(_itemToShow);
 
             if (Input.GetMouseButtonDown(_leftMouseButton))
             {
@@ -119,11 +132,9 @@ namespace Items.Controller
         
         private void OnLeftMouseButtonDown()
         {
-            Debug.Log("Item placed");
-
-            _updateItemCallback.Invoke();
+            _updateUiItem.Invoke();
             
-            Instantiate(_itemToPlace, Pointer.Position, Quaternion.identity);
+            Instantiate(_itemToPlace, Pointer.Position, _itemToShow.rotation);
             
             ClearCurrentItem();
 
@@ -132,7 +143,7 @@ namespace Items.Controller
 
         private void OnRightMouseButtonDown()
         {
-            _returnCallback.Invoke();
+            _returnUiItem.Invoke();
 
             ClearCurrentItem();
             
@@ -142,12 +153,16 @@ namespace Items.Controller
         public void AttachItem(InteractableItem interactableItem, Image itemImage, Action updateItemCallback, Action returnCallback)
         {
             _itemToPlace = interactableItem;
-            _updateItemCallback = updateItemCallback;
-            _returnCallback = returnCallback;
+            _updateUiItem = updateItemCallback;
+            _returnUiItem = returnCallback;
 
-            _itemToShowImage.sprite = itemImage.sprite;
-            _itemToShowImage.color = itemImage.color;
-            _itemToShowImage.SetNativeSize();
+            if (_itemToPlace is IPointerBehaviour pointerBehaviour)
+            {
+                _controlledByPointer = pointerBehaviour.OnControlledByPointer; 
+            }
+
+            _itemToShowRenderer.sprite = itemImage.sprite;
+            _itemToShowRenderer.color = itemImage.color;
             _itemToShow.gameObject.SetActive(true);
             
             _fsm.ChangeState(States.FollowsTheMouse);
@@ -155,12 +170,13 @@ namespace Items.Controller
 
         private void ClearCurrentItem()
         {
-            _itemToShowImage.sprite = null;
             _itemToPlace = null;
             _itemToShow.gameObject.SetActive(false);
-            
-            _updateItemCallback = null;
-            _returnCallback = null;
+            _itemToShow.rotation = Quaternion.identity;
+
+            _updateUiItem = null;
+            _returnUiItem = null;
+            _controlledByPointer = null;
         }
         
         #endregion

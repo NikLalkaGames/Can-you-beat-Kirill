@@ -19,5 +19,6 @@ namespace Items.Interaction
                 Destroy(gameObject);
             }
         }
+
     }
 }

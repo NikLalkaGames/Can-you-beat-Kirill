@@ -1,4 +1,5 @@
-﻿using Common.Events;
+﻿using System;
+using Common.Events;
 using Items.Interaction.Base;
 using Items.Interaction.Base.Interfaces;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine.PlayerLoop;
 
 namespace Items.Interaction
 {
-    public class Obstacle : InteractableItem
+    public class Obstacle : InteractableItem, IPointerBehaviour
     {
         [SerializeField] private float _rotationSpeed;
 
@@ -15,24 +16,22 @@ namespace Items.Interaction
 
         [SerializeField] private GameEvent OnItemPlaced;
 
-        protected override void Start()
+        private void OnEnable()
         {
-            base.Start();
             OnItemPlaced.Raise();
         }
-        
-        public void PointerAttachedBehaviour() 
+
+        public void OnControlledByPointer(Transform controlledByPointerItem) 
         {
             if (Input.GetKey(KeyCode.Q))
             {
                 _currentAngle += _rotationSpeed;
-                transform.rotation = Quaternion.Euler(0, 0, _currentAngle);
+                controlledByPointerItem.rotation = Quaternion.Euler(0, 0, _currentAngle);
             }
-
             if (Input.GetKey(KeyCode.E))
             {
                 _currentAngle -= _rotationSpeed;
-                transform.rotation = Quaternion.Euler(0, 0, _currentAngle);
+                controlledByPointerItem.rotation = Quaternion.Euler(0, 0, _currentAngle);
             }
             
         }
