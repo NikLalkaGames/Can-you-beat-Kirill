@@ -3,6 +3,7 @@ using System.Collections;
 using System.ComponentModel.Design.Serialization;
 using CameraLogic;
 using Google.Protobuf.WellKnownTypes;
+using Items.Interaction;
 using Items.Interaction.Base;
 using Items.Interaction.Base.Interfaces;
 using MonsterLove.StateMachine;

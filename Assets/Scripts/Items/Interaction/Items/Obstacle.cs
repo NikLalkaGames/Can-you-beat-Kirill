@@ -12,8 +12,6 @@ namespace Items.Interaction
     {
         [SerializeField] private float _rotationSpeed;
 
-        private float _currentAngle;
-
         [SerializeField] private GameEvent OnItemPlaced;
 
         private void OnEnable()
@@ -21,23 +19,21 @@ namespace Items.Interaction
             OnItemPlaced.Raise();
         }
 
-        public void OnControlledByPointer(Transform controlledByPointerItem) 
+        public void OnControlledByPointer(Transform controlledByPointerItem)
         {
+            var currentAngle= controlledByPointerItem.rotation.eulerAngles.z;
+            
             if (Input.GetKey(KeyCode.Q))
             {
-                _currentAngle += _rotationSpeed;
-                controlledByPointerItem.rotation = Quaternion.Euler(0, 0, _currentAngle);
+                currentAngle += _rotationSpeed;
+                controlledByPointerItem.rotation = Quaternion.Euler(0, 0, currentAngle);
             }
             if (Input.GetKey(KeyCode.E))
             {
-                _currentAngle -= _rotationSpeed;
-                controlledByPointerItem.rotation = Quaternion.Euler(0, 0, _currentAngle);
+                currentAngle -= _rotationSpeed;
+                controlledByPointerItem.rotation = Quaternion.Euler(0, 0, currentAngle);
             }
             
         }
-        
-        
-        
-
     }
 }
