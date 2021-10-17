@@ -5,17 +5,14 @@ using UnityEngine;
 
 namespace Items.Interaction
 {
-    public class HealingItem : InteractableItem
+    public class HealingItem : InteractableByEnemy
     {
         [SerializeField] private float _healValue;
-
-        private void OnCollisionEnter2D(Collision2D other)
+        
+        protected override void OnCollision(UnitHealth unitHealth)
         {
-            if (other.gameObject.TryGetComponent(out UnitHealth unitHealth))
-            {
-                unitHealth.Restore(_healValue);
-                Destroy(gameObject);
-            }
+            unitHealth.Restore(_healValue);
+            PoolManager.ReleaseObject(gameObject);
         }
     }
 }

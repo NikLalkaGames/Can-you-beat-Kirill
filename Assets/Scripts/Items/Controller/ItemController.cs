@@ -134,8 +134,8 @@ namespace Items.Controller
         private void OnLeftMouseButtonDown()
         {
             _updateUiItem.Invoke();
-            
-            Instantiate(_itemToPlace, Pointer.Position, _itemToShow.rotation);
+
+            PoolManager.SpawnObject(_itemToPlace.gameObject, Pointer.Position, _itemToShow.rotation);
             
             ClearCurrentItem();
 

@@ -1,3 +1,4 @@
+using Common.Containers;
 using Common.Events;
 using Common.Variables;
 using Items.Interaction.Base;
@@ -16,8 +17,11 @@ namespace Items.Interaction
         private void OnMouseDown()
         {
             _totalCoins.Value += _coinPickUpValue;
-            
-            gameObject.SetActive(_leftAfterPick);
+
+            if (!_leftAfterPick)
+            {
+                PoolManager.ReleaseObject(gameObject);
+            }
         }
         
         

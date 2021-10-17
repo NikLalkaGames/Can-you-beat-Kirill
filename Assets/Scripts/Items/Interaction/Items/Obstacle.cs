@@ -62,7 +62,7 @@ namespace Items.Interaction
                 _spriteRenderer.color = color;
             }
             
-            gameObject.SetActive(false);
+            PoolManager.ReleaseObject(gameObject);
             OnItemPlaced.Raise();
         }
     }

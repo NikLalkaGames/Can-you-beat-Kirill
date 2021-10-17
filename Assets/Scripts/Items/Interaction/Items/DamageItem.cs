@@ -5,18 +5,14 @@ using UnityEngine;
 
 namespace Items.Interaction
 {
-    public class DamageItem : InteractableItem
+    public class DamageItem : InteractableByEnemy
     {
         [SerializeField] private float _damageValue;
 
-        protected void OnCollisionEnter2D(Collision2D other)
+        protected override void OnCollision(UnitHealth unitHealth)
         {
-            if (other.gameObject.TryGetComponent(out UnitHealth unitHealth))
-            {
-                unitHealth.TryToDamage(_damageValue);
-                Destroy(gameObject);
-            }
+            unitHealth.TryToDamage(_damageValue);
+            PoolManager.ReleaseObject(gameObject);
         }
-
     }
 }
