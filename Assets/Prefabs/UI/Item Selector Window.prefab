@@ -41,8 +41,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 326.5637, y: 0}
-  m_SizeDelta: {x: 653.1274, y: 0}
+  m_AnchoredPosition: {x: 284.0637, y: 0}
+  m_SizeDelta: {x: 568.1274, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &256198944
 CanvasRenderer:
@@ -820,10 +820,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fcb57946b949b99e79799fa526f17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemCollection: {fileID: 11400000, guid: 99d1477dc5b62aa4fb0cc34ffaf0a1ff, type: 2}
   _totalCoins: {fileID: 11400000, guid: 0e99cd45304a72b4683b274294968e0c, type: 2}
   _refreshCost: 1
   _uiRefreshCost: {fileID: 9056303679320787374}
-  itemCollection: {fileID: 11400000, guid: 99d1477dc5b62aa4fb0cc34ffaf0a1ff, type: 2}
   uiItemTransforms:
   - {fileID: 9107161620755885974}
   - {fileID: 6198953827321423861}
@@ -1084,8 +1084,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 326.5637, y: 0}
-  m_SizeDelta: {x: 653.1274, y: 0}
+  m_AnchoredPosition: {x: 284.0637, y: 0}
+  m_SizeDelta: {x: 568.1274, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9107161622574885695
 MonoBehaviour:

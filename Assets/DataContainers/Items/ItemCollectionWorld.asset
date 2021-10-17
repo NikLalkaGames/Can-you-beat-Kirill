@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83e2c720edbf4fc08a43c11dba0a7a07, type: 3}
-  m_Name: ControlledItemCollection
+  m_Name: ItemCollectionWorld
   m_EditorClassIdentifier: 
   ItemPrefabs:
-  - {fileID: 460893868159726811, guid: e4ccd0e82bad7fd44b688ee51e2c3197, type: 3}
-  - {fileID: -5951593865330886059, guid: 0d9d120b00860bd4ab54992e623bf7e6, type: 3}
+  - {fileID: 5911176885185173791, guid: da01415faec0ce54da0d491ffab10a68, type: 3}
+  - {fileID: -7033254240708294944, guid: 274b5fd0827eb3045b6f2ec35d88c877, type: 3}

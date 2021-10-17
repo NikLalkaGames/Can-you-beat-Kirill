@@ -1,5 +1,4 @@
-﻿using Common.Containers;
-using Common.Variables;
+﻿using Common.Variables;
 using Items.Interaction.Base;
 using TMPro;
 using UI;
@@ -8,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace Items.Generation
 {
-    public class ItemGenerator : MonoBehaviour
+    public class ItemGeneratorUI : ItemGenerator
     {
         // total amount of coins
         [SerializeField] private IntVariable _totalCoins;
@@ -18,21 +17,10 @@ namespace Items.Generation
         
         // ui refresh items cost text
         [SerializeField] private TextMeshProUGUI _uiRefreshCost;
-        
-        // collection of all items available for movement in the game 
-        [SerializeField] private ItemCollection itemCollection;
-        
-        // cached available items
-        private InteractableItem[] _itemPrefabs;
-        
+
         // ui item transforms 
         [SerializeField] private Transform[] uiItemTransforms;
         
-
-        private void Awake()
-        {
-            _itemPrefabs = itemCollection.ItemPrefabs;
-        }
 
         #region Item changing logic
 
@@ -60,16 +48,16 @@ namespace Items.Generation
 
         public void UpdateItem(Transform uiItemTransform)
         {
-            var item = GenerateRandomItem();
+            var item = GetRandomItem();
             
             uiItemTransform.TryGetComponent(out UIItem uiItem);
             
             uiItem.AttachData(item, UpdateItem);
         }
         
-        private InteractableItem GenerateRandomItem()
+        private InteractableItem GetRandomItem()
         {
-            return _itemPrefabs[Random.Range(0, _itemPrefabs.Length)];
+            return ItemPrefabs[Random.Range(0, ItemPrefabs.Length)];
         }
 
         #endregion
