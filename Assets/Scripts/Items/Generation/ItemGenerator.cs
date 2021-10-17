@@ -23,7 +23,7 @@ namespace Items.Generation
         [SerializeField] private ItemCollection itemCollection;
         
         // cached available items
-        private MovableItem[] _itemPrefabs;
+        private InteractableItem[] _itemPrefabs;
         
         // ui item transforms 
         [SerializeField] private Transform[] uiItemTransforms;
@@ -67,7 +67,7 @@ namespace Items.Generation
             uiItem.AttachData(item, UpdateItem);
         }
         
-        private MovableItem GenerateRandomItem()
+        private InteractableItem GenerateRandomItem()
         {
             return _itemPrefabs[Random.Range(0, _itemPrefabs.Length)];
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Common.Events;
 using UnityEngine;
 
 namespace Items.Interaction.Base
@@ -6,6 +7,8 @@ namespace Items.Interaction.Base
     public abstract class InteractableItem : MonoBehaviour
     {
         protected string Name;
+        
+        public int Price;
 
         protected Collider2D Collider2D;
 
@@ -21,11 +24,7 @@ namespace Items.Interaction.Base
             {
                 Collider2D = collider2D;
             }
-        }
-
-        protected virtual void OnMouseDown()
-        {
-            Debug.Log($"MouseDown on {Name}");
+            
         }
     }
 }

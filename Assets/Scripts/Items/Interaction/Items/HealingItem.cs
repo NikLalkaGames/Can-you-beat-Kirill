@@ -1,10 +1,11 @@
 ﻿using System;
 using EnemyBehaviour.Health;
+using Items.Interaction.Base;
 using UnityEngine;
 
 namespace Items.Interaction
 {
-    public class Healer : MonoBehaviour
+    public class HealingItem : InteractableItem
     {
         [SerializeField] private float _healValue;
 

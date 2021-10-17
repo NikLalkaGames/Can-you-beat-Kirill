@@ -5,14 +5,12 @@ using UnityEngine;
 
 namespace Items.Interaction
 {
-    public class MovableDamage : MovableItem
+    public class DamageItem : InteractableItem
     {
         [SerializeField] private float _damageValue;
 
-        protected override void World_OnTriggerEnter2D(Collider2D other)
+        protected void OnTriggerEnter2D(Collider2D other)
         {
-            base.World_OnTriggerEnter2D(Collider2D);
-            
             Debug.Log("Enter OnTriggerEnter state");
             
             if (other.TryGetComponent(out UnitHealth unitHealth))

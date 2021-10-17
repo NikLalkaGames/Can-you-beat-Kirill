@@ -13,7 +13,7 @@ namespace Items.Interaction
         
         [SerializeField] private bool _leftAfterPick;
 
-        protected override void OnMouseDown()
+        private void OnMouseDown()
         {
             _totalCoins.Value += _coinPickUpValue;
             
