@@ -6,6 +6,6 @@ namespace Common.Containers
     [CreateAssetMenu(menuName = "Items/ItemCollection")]
     public class ItemCollection : ScriptableObject
     {
-        public MovableItem[] ItemPrefabs;
+        public InteractableItem[] Items;
     }
 }

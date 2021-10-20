@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 1254970299512197079}
   - component: {fileID: 1254970299512197078}
   - component: {fileID: 3204868358342418328}
+  - component: {fileID: 5911176885185173791}
   m_Layer: 0
   m_Name: Burger
-  m_TagString: Untagged
+  m_TagString: Heal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1254970299512197079
 Transform:
   m_ObjectHideFlags: 0
@@ -69,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1444738587
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b74cecfbe5e68604d9dabb2d68083ece, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -93,10 +94,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0007279217, y: -0.011646658}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -107,5 +108,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3472222, y: 0.3472222}
+  m_Size: {x: 0.22854418, y: 0.16670668}
   m_EdgeRadius: 0
+--- !u!114 &5911176885185173791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254970299512197081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f962ce07454ea1b22a35234d337a1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Price: 0
+  _itemRuntimeSet: {fileID: 11400000, guid: eeacacaf9ec00fc499df8da4609d59bf, type: 2}
+  _healValue: 150
+  OnHealingItemInteracted: {fileID: 11400000, guid: 9506671bc9b12bf429abb0704499e50c, type: 2}

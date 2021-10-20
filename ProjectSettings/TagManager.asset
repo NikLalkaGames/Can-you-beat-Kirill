@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Damage
+  - Heal
   layers:
   - Default
   - TransparentFX
@@ -11,8 +13,8 @@ TagManager:
   - 
   - Water
   - UI
+  - Item
   - Obstacle
-  - 
   - 
   - 
   - 
@@ -40,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Items
+    uniqueID: 2850228709
+    locked: 0
+  - name: Player
+    uniqueID: 3260117285
+    locked: 0
+  - name: UI
+    uniqueID: 1284477537
     locked: 0

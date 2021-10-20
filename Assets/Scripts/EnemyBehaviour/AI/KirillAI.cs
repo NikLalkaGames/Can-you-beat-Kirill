@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using Common.Containers;
 using UnityEngine;
 using Pathfinding;
 
 public class KirillAI : MonoBehaviour
 {
 
-    public Transform targetCollection;
+    public RuntimeSet targetCollection;
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
     public float updatePathInterval = 0.5f;
@@ -53,11 +55,11 @@ public class KirillAI : MonoBehaviour
     }
     void FindShortest()
     {
-        minLength = 100000f;
-        remaningTargetsCount = targetCollection.childCount;
-        foreach (Transform tmp_target in targetCollection)
+        minLength = Mathf.Infinity;
+        remaningTargetsCount = targetCollection.Items.Count;
+        foreach (Transform tmpTarget in targetCollection.Items)
         {
-            RequestManager.RequestPath(rb.position, tmp_target, OnTmpPathComplete);
+            RequestManager.RequestPath(rb.position, tmpTarget.transform, OnTmpPathComplete);
         }
     }
     void OnTmpPathComplete(Transform tmpTarget, float length)
@@ -88,9 +90,10 @@ public class KirillAI : MonoBehaviour
         if (!reachedEndOfPath)
         {
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            Vector2 force = direction * speed * Time.deltaTime;
+            Vector2 force = direction * (speed * Time.deltaTime);
 
             rb.AddForce(force);
+
             distanceToWaypoint = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
         }
 

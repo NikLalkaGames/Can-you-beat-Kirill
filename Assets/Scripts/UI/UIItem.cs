@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using CameraLogic;
 using Common;
+using Common.Events;
 using Common.GameManagement;
 using Common.Variables;
+using Items.Controller;
 using Items.Interaction;
 using Items.Interaction.Base;
 using TMPro;
@@ -15,7 +18,7 @@ namespace UI
     public class UIItem : MonoBehaviour, IPointerDownHandler
     {
         // MovableItem component reference reference
-        private MovableItem _itemPrefab;
+        private InteractableItem _itemPrefab;
 
         // ui item sprite values
         private Image _image;
@@ -35,7 +38,7 @@ namespace UI
             _image = GetComponent<Image>();
         }
 
-        public void AttachData(MovableItem itemPrefab, Action<Transform> updateItem)
+        public void AttachData(InteractableItem itemPrefab, Action<Transform> updateItem)
         {
             _itemPrefab = itemPrefab;
             
@@ -57,8 +60,13 @@ namespace UI
             if (_totalCoins.Value < _itemPrefab.Price) return;
             _image.color = _fadedColor;
 
-            var runtimeMovableItem = Instantiate(_itemPrefab, Pointer.Position, Quaternion.identity);
-            runtimeMovableItem.AttachCallbacks(ReturnItem, UpdateItem);
+            StartCoroutine(AttachItemAfterClick());
+        }
+
+        private IEnumerator AttachItemAfterClick()
+        {
+            yield return new WaitForEndOfFrame();
+            ItemController.Instance.AttachItem(_itemPrefab, _image, UpdateItem, ReturnItem);
         }
 
         private void ReturnItem()
