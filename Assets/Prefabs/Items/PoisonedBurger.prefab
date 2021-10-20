@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Price: 0
+  _itemRuntimeSet: {fileID: 11400000, guid: eeacacaf9ec00fc499df8da4609d59bf, type: 2}
   _damageValue: 10
 --- !u!50 &-8054508381749277482
 Rigidbody2D:

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e2c720edbf4fc08a43c11dba0a7a07, type: 3}
   m_Name: ItemCollectionUI
   m_EditorClassIdentifier: 
-  ItemPrefabs:
+  Items:
   - {fileID: 460893868159726811, guid: e4ccd0e82bad7fd44b688ee51e2c3197, type: 3}
   - {fileID: -5951593865330886059, guid: 0d9d120b00860bd4ab54992e623bf7e6, type: 3}

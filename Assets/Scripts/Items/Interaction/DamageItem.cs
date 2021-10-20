@@ -1,6 +1,5 @@
-﻿using System;
-using Common.Containers;
-using EnemyBehaviour.Health;
+﻿using EnemyBehaviour.Health;
+using Items.Generation;
 using Items.Interaction.Base;
 using UnityEngine;
 
@@ -12,12 +11,15 @@ namespace Items.Interaction
         
         private void OnEnable()
         {
-            transform.SetParent(FoodRuntimeCollection.Instance.transform);
+            transform.SetParent(null);
+            _itemRuntimeSet.Add(transform);
         }
         
         protected override void OnCollision(UnitHealth unitHealth)
         {
             unitHealth.TryToDamage(_damageValue);
+            _itemRuntimeSet.Remove(transform);
+            
             PoolManager.ReleaseObject(gameObject);
             transform.SetParent(PoolManager.Instance.root);
         }

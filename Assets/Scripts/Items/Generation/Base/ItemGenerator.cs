@@ -15,7 +15,7 @@ namespace Items.Generation
 
         protected virtual void Awake()
         {
-            ItemPrefabs = ItemCollection.ItemPrefabs;
+            ItemPrefabs = ItemCollection.Items;
         }
     }
 }

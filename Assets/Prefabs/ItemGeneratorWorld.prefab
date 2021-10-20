@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemCollection: {fileID: 11400000, guid: 595f2d7479f1ca04988498850b0acae2, type: 2}
-  locationRectSize: {x: 10, y: 10}
-  numberOfItems: 10
+  locationRectSize: {x: 5, y: 5}
+  numberOfItems: 5
 --- !u!114 &1522098287
 MonoBehaviour:
   m_ObjectHideFlags: 0
