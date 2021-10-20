@@ -1,5 +1,5 @@
-﻿using System;
-using Common.Variables;
+﻿using System.Collections;
+using Common;
 using EnemyBehaviour.Health;
 using UnityEngine;
 
@@ -11,6 +11,10 @@ namespace EnemyBehaviour.Interaction
 
         [SerializeField] private float _damageValue;
 
+        [SerializeField] private GameObject _coinPrefab;
+        
+        private int _numberOfClicks; 
+
         private void Awake()
         {
             if (_health is null) Debug.LogError("Need to attach health script");
@@ -18,7 +22,16 @@ namespace EnemyBehaviour.Interaction
 
         private void OnMouseDown()
         {
+            _numberOfClicks++;
             _health.Reduce(_damageValue);
+
+            if (_numberOfClicks % 5 == 0)
+            {
+                var coin = PoolManager.SpawnObject(_coinPrefab, transform.position, Quaternion.identity);
+                // implement with animation curve
+            }
         }
+        
+
     }
 }

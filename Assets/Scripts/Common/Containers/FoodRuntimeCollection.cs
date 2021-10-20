@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Items.Interaction
+namespace Common.Containers
 {
     public class FoodRuntimeCollection : MonoBehaviour
     {

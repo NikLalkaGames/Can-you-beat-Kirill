@@ -1,28 +1,25 @@
 ﻿using System;
-using Common.Events;
+using Common.Containers;
 using EnemyBehaviour.Health;
 using Items.Interaction.Base;
 using UnityEngine;
 
 namespace Items.Interaction
 {
-    public class HealingItem : InteractableByEnemy
+    public class DamageItem : InteractableByEnemy
     {
-        [SerializeField] private float _healValue;
+        [SerializeField] private float _damageValue;
         
-        [SerializeField] private GameEvent OnHealingItemInteracted;
-
         private void OnEnable()
         {
             transform.SetParent(FoodRuntimeCollection.Instance.transform);
         }
-
+        
         protected override void OnCollision(UnitHealth unitHealth)
         {
-            unitHealth.Restore(_healValue);
+            unitHealth.TryToDamage(_damageValue);
             PoolManager.ReleaseObject(gameObject);
             transform.SetParent(PoolManager.Instance.root);
-            OnHealingItemInteracted.Raise();
         }
     }
 }
