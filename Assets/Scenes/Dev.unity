@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9179285343811419295, guid: cb871a830417e934c9acac5a620929c4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb871a830417e934c9acac5a620929c4, type: 3}
@@ -191,14 +191,78 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[1].time
+      value: 0.14970778
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[2].time
+      value: 0.22965784
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[3].time
+      value: 0.21409388
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[1].value
+      value: 0.25433868
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[2].value
+      value: 0.2012409
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[3].value
+      value: 0.19727361
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[1].inSlope
+      value: -0.009055341
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[2].inSlope
+      value: -1.4781734
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[3].inSlope
+      value: -1.4781734
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[1].outSlope
+      value: -0.009055341
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[2].outSlope
+      value: -1.4781734
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[3].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[3].outSlope
+      value: -1.4781734
+      objectReference: {fileID: 0}
+    - target: {fileID: 3262800483441874290, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: _animCurve.m_Curve.Array.data[3].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832183311855213578, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: speed
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832183311855213578, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4832183311855213578, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
       propertyPath: targetCollection
       value: 
       objectReference: {fileID: 630165257}
-    - target: {fileID: 6636230461492545938, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
-      propertyPath: orthographic size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8234323921956232032, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
       propertyPath: m_RootOrder
       value: 4

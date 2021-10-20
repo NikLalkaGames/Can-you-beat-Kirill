@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using Common;
-using EnemyBehaviour.Health;
+﻿using EnemyBehaviour.Health;
+using Items.Generation;
 using UnityEngine;
 
 namespace EnemyBehaviour.Interaction
@@ -11,8 +10,9 @@ namespace EnemyBehaviour.Interaction
 
         [SerializeField] private float _damageValue;
 
-        [SerializeField] private GameObject _coinPrefab;
+        [SerializeField] private CoinDrop _coinDrop;
         
+
         private int _numberOfClicks; 
 
         private void Awake()
@@ -27,8 +27,7 @@ namespace EnemyBehaviour.Interaction
 
             if (_numberOfClicks % 5 == 0)
             {
-                var coin = PoolManager.SpawnObject(_coinPrefab, transform.position, Quaternion.identity);
-                // implement with animation curve
+                _coinDrop.enabled = true;
             }
         }
         
