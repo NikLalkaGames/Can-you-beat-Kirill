@@ -123,9 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1542c64ff0414b25b6000c0dcacbd2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Price: 0
+  Price: 3
   _itemRuntimeSet: {fileID: 11400000, guid: eeacacaf9ec00fc499df8da4609d59bf, type: 2}
-  _damageValue: 10
+  _damageValue: 50
 --- !u!50 &-8054508381749277482
 Rigidbody2D:
   serializedVersion: 4
