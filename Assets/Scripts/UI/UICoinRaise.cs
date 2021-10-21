@@ -21,6 +21,8 @@ namespace UI
 
         [SerializeField] private float _speed;
 
+        [SerializeField] private AudioSource _coinRaiseSound;
+
         private void Start()
         {
             DeactivateSelf();
@@ -35,6 +37,8 @@ namespace UI
             StopCoroutine(MoveToTargetRoutine());
             
             _transform.position = RectTransformUtility.WorldToScreenPoint(_camera, worldStartTransform.position);
+            
+            _coinRaiseSound.Play();
             
             StartCoroutine(MoveToTargetRoutine());
         }

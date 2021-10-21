@@ -21,6 +21,8 @@ namespace Items.Generation
 
         private bool _needToDrop;
 
+        [SerializeField] private AudioSource _coinDropSound;
+
         private void OnEnable()
         {
             _coinTransform = PoolManager.SpawnObject(_coinPrefab, transform.position, quaternion.identity).transform;
@@ -28,6 +30,8 @@ namespace Items.Generation
             _startPosition = _coinTransform.position;
             
             _needToDrop = true;
+            
+            _coinDropSound.Play();
         }
 
         private void Update()
