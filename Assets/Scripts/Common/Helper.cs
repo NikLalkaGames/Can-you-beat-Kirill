@@ -10,7 +10,7 @@ namespace Common
         }
 
         public static bool Reached(Vector3 currentPosition, Vector3 targetPosition) =>
-            Vector2.Distance(currentPosition, targetPosition) < 1e-2;
+            Vector2.Distance(currentPosition, targetPosition) < 1e-1;
 
         public static float ParabolaFunc(float x, float width)
         {

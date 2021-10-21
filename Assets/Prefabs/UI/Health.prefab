@@ -339,6 +339,14 @@ PrefabInstance:
       propertyPath: m_MaxValue
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 4001875059247070602, guid: a7c56d98b57be104c84f4e281f0808e2, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4001875059247070602, guid: a7c56d98b57be104c84f4e281f0808e2, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4198677683502822381, guid: a7c56d98b57be104c84f4e281f0808e2, type: 3}
       propertyPath: m_SizeDelta.x
       value: 71.4034

@@ -1,4 +1,5 @@
 using System;
+using Common.Events;
 using Common.Variables;
 using Items.Interaction.Base;
 using UnityEngine;
@@ -11,16 +12,22 @@ namespace Items.Interaction
 
         [SerializeField] private int _coinPickUpValue;
 
+        [SerializeField] private float _rotationSpeed;
+
+        [SerializeField] private TransformGameEvent OnCoinClicked; 
+
         private void OnMouseDown()
         {
             _totalCoins.Value += _coinPickUpValue;
             
+            OnCoinClicked.Raise(transform);
+            
             PoolManager.ReleaseObject(gameObject);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            transform.RotateAround(transform.position, Vector3.up, 1f);
+            transform.RotateAround(transform.position, Vector3.up, _rotationSpeed * Time.fixedDeltaTime);
         }
     }
 }

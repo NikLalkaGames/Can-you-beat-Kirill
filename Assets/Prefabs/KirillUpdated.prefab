@@ -207,8 +207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCollection: {fileID: 11400000, guid: eeacacaf9ec00fc499df8da4609d59bf, type: 2}
-  speed: 350
-  nextWaypointDistance: 3
+  speed: 100
+  nextWaypointDistance: 0.2
   updatePathInterval: 1
   findShortestInterval: 2
 --- !u!114 &1262301603203429997
@@ -252,8 +252,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.14970778
-      value: 0.25433868
+      time: 0.13399123
+      value: 0.29956573
       inSlope: -0.009055341
       outSlope: -0.009055341
       tangentMode: 0
@@ -261,7 +261,7 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.22965784
+      time: 0.21452112
       value: 0.2012409
       inSlope: -1.4781734
       outSlope: -1.4781734

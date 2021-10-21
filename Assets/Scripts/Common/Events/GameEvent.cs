@@ -24,6 +24,5 @@ namespace Common.Events
             _listeners.Remove(listener);
         }
         
-        
     }
 }
