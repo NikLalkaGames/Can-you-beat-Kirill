@@ -191,6 +191,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4832183311855213578, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: speed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832183311855213578, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: nextWaypointDistance
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8234323921956232032, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -238,6 +246,10 @@ PrefabInstance:
     - target: {fileID: 8234323921956232034, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
       propertyPath: m_Name
       value: KirillUpdated
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058232592886587686, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
@@ -377,7 +389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8663836065802550518, guid: bd8bc049d25d2a343b831c99864e7888, type: 3}
       propertyPath: data.dataString
-      value: UEsDBBQAAAgIAAAYIew+MLSeTAIAAPUEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzqVju8kEemuBkB4ITGgmF1+EtMYaZMkjyeFr+O9dyTZ23emJZd/b3bcf8pUIZUtgTpulEXylOZDvI+Jt8mXUgS9wonuttuICLedDcJd7Eg2cN+qERn/sw6wuwBnBfqi99OQInZUSmTbFgu9hpq2z6M6otICQ0c5HK3RdR+SEP+OpDzmjlTx564LWNBrd0GSgHJiO2hJbWs2qFJO0KIF7yR05uaetaQqbaRjR18Rn11IK22gh7lyGXrdlDgZ8s1xQbC3Uj0NADmKfO5+xH73OMguuUWXoeS4MzqhOS37qenAFtYda2ieVlS8UJ5Mgq066+gcfxwHOjC5e2rpx5Gu4XLDDGz0zal1vsn33vCc9TOhI5YHuJHzkoF710uhKcQSdqXxoZSGZd3/vrc1yYIfOX0sdOKvy//vxPdxC96eZFMUujP6hdmylDgMP2weDy/mFgsNt2CYFer2Kdwu/6b5/RA3wLIx1CDVdKi9vpyvjqWQRZua7qdxMGwXB3YguQVHpzhtM44YrHGC9sgPkmfrn0hRvsPYVDEKCu+NH0QDa6ON9WTbXxxXYfF05KRR0oj3winOaaaXqC+vPpA3bViajrBe2rwT/+7RIzB5Yku0mEX3k8MTiMY0jvnsE+DaZRjBJYhJuTyjsk8pNLbQZD25NdckV3ln7FRktDS3DtXNDj0txKXRv5EJlessMgFrXGe7CwWARfJh8wQUOaAvOCRX2Ta4pkZodgKf3RGnodHFyhqZdlpSU4lM770nJLHw2UnIjtz9QSwMEFAAACAgAABgh7JRU4IJtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTVUVBKL0osyCgGihiCOKWZKSB2tJJhskmyUVqShUGiaUqqebKhbqKhQUqSaWqqsYWlQaqFkaFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAABgh7D4wtJ5MAgAA9QQAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAABgh7JRU4IJtAAAAeAAAAAkAJAAAAAAAAAAAAAAAmQIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABRAwAAAAA=
+      value: UEsDBBQAAAgIAAAYIexdSLF5TgIAAPUEAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMziVju0lDemuBkB4ITEgnF1+EtMYaZMkjyeFr+O9dyTZ23emJ5e3b3bcf8oUIZUtgTpuFEXypOZDvI+Jt8mXUOV/gSHdabcQZWs6H4C73JBo4b9QJjXjsw6wuwBnBfqid9OQIwUqJTJtizncw1dZZhDMqLaDLaOejFUKXETniz/jJh5zQSh69dUbrKRpd0WSgHJiO2hJbWs2qFJO0KIF7yR05uaWtaQqbaRjRXeKzaymFbbQQdypDr5syBwO+WS4othbqx3ffEMhB7HLnM/ajV1lmwTWqDD3NhMEZ1WnJT10PrqB2X0v7pLLyheJkEmTVSZf/+MdxcGdGFy9t3TjyNVwu2P6Nnhi1rjfZPjzrSQ8TOlC5p1sJHzmoV70wulIcnc5UPrSykMy6v7fWpjmwfYfXUgdgVf5/P76Ha+j+OJWi2IbR39fARuow8LB9MLicXyg43IZtUiDqVfy28E53/SNqHM/CWIeupkvl5W11ZTyVzMPMfDeVm2qjIMCN6BIUle60xjRuuMKBr1d24Hmm/rk0xRtf+woGIQHu+FE0cK314bYsm+vDEmy+qpwUCjrR3vGKc5pqpeoL68+kDdtUJqOsF7arBP/7tEjM7lmSbScRfeDwyOIxjSO+fQD4OnmKYJLEJNyeUNgnletaaDMe3Jrqkiu8s/YrMloYWoZr54YeFuJc6N7Ihcr0hhkAtaoz3ISDwSL4MPmcCxzQBpwTKuybXFIiNdsDT2+J0tDp/OgMTbssKSnFp3YeSck0fDZSciXXP1BLAwQUAAAICAAAGCHslFTggm0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNVRUEovSizIKAaKGII4pZkpIHa0kmGySbJRWpKFQaJpSqp5sqFuoqFBSpJpaqqxhaVBqoWRoVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAGCHsXUixeU4CAAD1BAAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAGCHslFTggm0AAAB4AAAACQAkAAAAAAAAAAAAAACbAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAFMDAAAAAA==
       objectReference: {fileID: 0}
     - target: {fileID: 8663836065802550519, guid: bd8bc049d25d2a343b831c99864e7888, type: 3}
       propertyPath: m_RootOrder
@@ -462,7 +474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453338426468435301, guid: fe91584abe05f7542b0cffabdfbd5b85, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 582.1274
+      value: 596.6274
       objectReference: {fileID: 0}
     - target: {fileID: 453338426468435301, guid: fe91584abe05f7542b0cffabdfbd5b85, type: 3}
       propertyPath: m_SizeDelta.y
@@ -470,7 +482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453338426468435301, guid: fe91584abe05f7542b0cffabdfbd5b85, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 291.0637
+      value: 298.3137
       objectReference: {fileID: 0}
     - target: {fileID: 453338426468435301, guid: fe91584abe05f7542b0cffabdfbd5b85, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -720,6 +732,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3585728198650531402, guid: fe91584abe05f7542b0cffabdfbd5b85, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585728198650531402, guid: fe91584abe05f7542b0cffabdfbd5b85, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5834924633859219059, guid: fe91584abe05f7542b0cffabdfbd5b85, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -790,7 +810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8658653913551972186, guid: fe91584abe05f7542b0cffabdfbd5b85, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 582.1274
+      value: 596.6274
       objectReference: {fileID: 0}
     - target: {fileID: 8658653913551972186, guid: fe91584abe05f7542b0cffabdfbd5b85, type: 3}
       propertyPath: m_SizeDelta.y
@@ -798,7 +818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8658653913551972186, guid: fe91584abe05f7542b0cffabdfbd5b85, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 291.0637
+      value: 298.3137
       objectReference: {fileID: 0}
     - target: {fileID: 8658653913551972186, guid: fe91584abe05f7542b0cffabdfbd5b85, type: 3}
       propertyPath: m_AnchoredPosition.y
