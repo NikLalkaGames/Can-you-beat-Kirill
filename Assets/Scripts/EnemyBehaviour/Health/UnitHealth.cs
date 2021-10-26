@@ -1,4 +1,5 @@
-﻿using Common.Variables;
+﻿using Common.Events;
+using Common.Variables;
 using UnityEngine;
 
 namespace EnemyBehaviour.Health
@@ -30,6 +31,14 @@ namespace EnemyBehaviour.Health
         private float _invincibleTimer;
 
         #endregion
+        
+        #region OnHealthRestored
+
+        [SerializeField] private GameEvent OnHealthRestored;
+
+        [SerializeField] private GameEvent OnHealthReduced;
+        
+        #endregion
 
         #endregion
         
@@ -37,21 +46,31 @@ namespace EnemyBehaviour.Health
 
         protected void Start() => HP.Value = HP.MaxValue;
 
-        public void Restore(float amount) =>
+        public void Restore(float amount)
+        {
             HP.Value += amount;
+            
+            if (OnHealthRestored != null)
+                OnHealthRestored.Raise();
+        }
         
         public void TryToDamage(float amount)
         {
             if (_invincibleTimer >= 0) return;
 
-            var damage = Mathf.Clamp(amount - defense, 0f, Mathf.Infinity );
+            var damage = Mathf.Clamp(amount - defense, 0f, Mathf.Infinity);
             Reduce(damage);
             
             _invincibleTimer = timeInvincible;
         }
 
-        public void Reduce(float amount) => 
+        public void Reduce(float amount)
+        {
             HP.Value -= amount;
+            
+            if (OnHealthReduced != null)
+                OnHealthReduced.Raise();
+        }
 
         protected void FixedUpdate()
         {

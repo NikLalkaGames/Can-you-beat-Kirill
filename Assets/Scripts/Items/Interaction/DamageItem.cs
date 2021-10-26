@@ -9,19 +9,17 @@ namespace Items.Interaction
     {
         [SerializeField] private float _damageValue;
         
-        private void OnEnable()
+        protected override void OnCollisionEnter2D(Collision2D other)
         {
-            transform.SetParent(null);
-            _itemRuntimeSet.Add(transform);
-        }
-        
-        protected override void OnCollision(UnitHealth unitHealth)
-        {
-            unitHealth.TryToDamage(_damageValue);
-            _itemRuntimeSet.Remove(transform);
+            if (other.gameObject.TryGetComponent(out UnitHealth unitHealth))
+            {
+                unitHealth.TryToDamage(_damageValue);
+                _itemRuntimeSet.Remove(transform);
             
-            PoolManager.ReleaseObject(gameObject);
-            transform.SetParent(PoolManager.Instance.root);
+                PoolManager.ReleaseObject(gameObject);
+                transform.SetParent(PoolManager.Instance.root);
+            }
+            
         }
     }
 }
