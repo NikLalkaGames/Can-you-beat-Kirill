@@ -15,7 +15,8 @@ namespace Items.Interaction
             {
                 unitHealth.TryToDamage(_damageValue);
                 _itemRuntimeSet.Remove(transform);
-            
+                base.OnCollisionEnter2D(other);
+
                 PoolManager.ReleaseObject(gameObject);
                 transform.SetParent(PoolManager.Instance.root);
             }

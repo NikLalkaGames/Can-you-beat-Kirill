@@ -33,7 +33,14 @@ public class KirillAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         InvokeRepeating("UpdatePath", 0f, updatePathInterval);
-        InvokeRepeating("FindShortest", 0f, findShortestInterval);
+
+        StartCoroutine(FindShortestWithDelay());
+    }
+
+    private IEnumerator FindShortestWithDelay()
+    {
+        yield return new WaitForSeconds(findShortestInterval);
+        FindShortest();
     }
 
     void UpdatePath()
@@ -53,8 +60,10 @@ public class KirillAI : MonoBehaviour
             currentWaypoint = 0;
         }
     }
-    void FindShortest()
+    public void FindShortest()
     {
+        RequestManager.ResetRequests();
+
         minLength = Mathf.Infinity;
         remaningTargetsCount = targetCollection.Items.Count;
         foreach (Transform tmpTarget in targetCollection.Items)
