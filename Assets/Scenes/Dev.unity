@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!82 &24541281 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3064837398919725173, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
-  m_PrefabInstance: {fileID: 283080352}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &159497054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,34 +238,6 @@ PrefabInstance:
     - target: {fileID: 8234323921956232034, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
       propertyPath: m_Name
       value: KirillUpdated
-      objectReference: {fileID: 0}
-    - target: {fileID: 8564808153512731020, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8564808153512731020, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8564808153512731020, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 24541281}
-    - target: {fileID: 8564808153512731020, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8564808153512731020, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Stop
-      objectReference: {fileID: 0}
-    - target: {fileID: 8564808153512731020, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.AudioSource, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8564808153512731020, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94083a0e706875142bc2a28ae9edb9a9, type: 3}
