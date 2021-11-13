@@ -19,6 +19,11 @@ public class RequestManager : MonoBehaviour
         seeker = GetComponent<Seeker>();
     }
 
+    public static void ResetRequests()
+    {
+        instance.pathRequests.Clear();
+    }
+
     public static void RequestPath(Vector2 startPos, Transform target, Action<Transform, float>callback)
     {
         PathRequest newRequest = new PathRequest(startPos, target, callback);

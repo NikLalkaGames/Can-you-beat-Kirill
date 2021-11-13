@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 153e4d4976264e5690a6eb0fef787d32, type: 3}
-  m_Name: FoodRuntimeCollection
+  m_Script: {fileID: 11500000, guid: 32d92cbe0024479f9264ce62ca9a574e, type: 3}
+  m_Name: OnRuntimeItemRemoved
   m_EditorClassIdentifier: 
-  Items: []
-  onItemRemoved: {fileID: 11400000, guid: ecbb359f5847a5e4abd00f824fed453a, type: 2}
