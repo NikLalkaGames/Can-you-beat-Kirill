@@ -9,18 +9,19 @@ namespace Items.Interaction.Base
     public abstract class InteractableByEnemy : InteractableItem
     {
         [SerializeField] protected RuntimeSet _itemRuntimeSet;
+        
         public GameEvent onItemRemoved;
 
-        protected void OnEnable()
+        private Transform _transform;
+        
+        protected virtual void OnEnable()
         {
-            transform.SetParent(null);
-            _itemRuntimeSet.Add(transform);
+            _transform = transform;
+            _transform.SetParent(null);
+            _itemRuntimeSet.Add(_transform);
         }
         
         // protocol of collision
-        protected virtual void OnCollisionEnter2D(Collision2D other)
-        {
-            if (onItemRemoved != null) onItemRemoved.Raise();
-        }
+        protected abstract void OnCollisionEnter2D(Collision2D other);
     }
 }

@@ -1,65 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using System.Collections.Generic;
 using Pathfinding;
+using UnityEngine;
 
-public class RequestManager : MonoBehaviour
+namespace EnemyBehaviour.AI
 {
-    Queue<PathRequest> pathRequests = new Queue<PathRequest>();
-    PathRequest currentPathRequest;
-
-    static RequestManager instance;
-    Seeker seeker;
-
-    bool isProcessingPath;
-    void Awake()
+    public class RequestManager : MonoBehaviour
     {
-        instance = this;
-        seeker = GetComponent<Seeker>();
-    }
+        private readonly Queue<PathRequest> _pathRequests = new Queue<PathRequest>();
+        private PathRequest _currentPathRequest;
 
-    public static void ResetRequests()
-    {
-        instance.pathRequests.Clear();
-    }
+        public static RequestManager Instance;
+        private Seeker _seeker;
 
-    public static void RequestPath(Vector2 startPos, Transform target, Action<Transform, float>callback)
-    {
-        PathRequest newRequest = new PathRequest(startPos, target, callback);
-        instance.pathRequests.Enqueue(newRequest);
-        instance.TryProcessNext();
-    }
-    void TryProcessNext()
-    {
-        if(!isProcessingPath && pathRequests.Count > 0)
+        private bool _isProcessingPath;
+
+        private void Awake()
         {
-            currentPathRequest = pathRequests.Dequeue();
-            isProcessingPath = true;
-            seeker.StartPath(currentPathRequest.startPos, currentPathRequest.target.position, OnPathComplete);
+            Instance = this;
+            _seeker = GetComponent<Seeker>();
         }
-    }
 
-    void OnPathComplete(Path p)
-    {
-        if (!p.error)
+        public static void ResetRequests()
         {
-            currentPathRequest.callback(currentPathRequest.target, p.GetTotalLength());
-            isProcessingPath = false;
+            Instance._pathRequests.Clear();
+        }
+
+        public static void RequestPath(Vector2 startPos, Transform target, Action<Transform, float>callback)
+        {
+            PathRequest newRequest = new PathRequest(startPos, target, callback);
+            Instance._pathRequests.Enqueue(newRequest);
+            Instance.TryProcessNext();
+        }
+        
+        private void TryProcessNext()
+        {
+            if (_isProcessingPath || _pathRequests.Count <= 0) return;
+            _currentPathRequest = _pathRequests.Dequeue();
+            _isProcessingPath = true;
+            _seeker.StartPath(_currentPathRequest.StartPos, _currentPathRequest.Target.position, OnPathComplete);
+        }
+
+        private void OnPathComplete(Path p)
+        {
+            if (p.error) return;
+            _currentPathRequest.Callback(_currentPathRequest.Target, p.GetTotalLength());
+            _isProcessingPath = false;
             TryProcessNext();
         }
-    }
-    struct PathRequest
-    {
-        public Vector2 startPos;
-        public Transform target;
-        public Action<Transform, float> callback;
 
-        public PathRequest(Vector2 _startPos, Transform _target, Action<Transform, float> _callback)
-        {
-            startPos = _startPos;
-            target = _target;
-            callback = _callback;
-        }
+
     }
 }

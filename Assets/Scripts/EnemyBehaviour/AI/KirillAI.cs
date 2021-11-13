@@ -1,118 +1,120 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using Common.Containers;
-using UnityEngine;
 using Pathfinding;
+using UnityEngine;
 
-public class KirillAI : MonoBehaviour
+namespace EnemyBehaviour.AI
 {
-
-    public RuntimeSet targetCollection;
-    public float speed = 200f;
-    public float nextWaypointDistance = 3f;
-    public float updatePathInterval = 0.5f;
-    public float findShortestInterval = 2f;
-
-    Path path;
-    int currentWaypoint = 0;
-    bool reachedEndOfPath = false;
-    Transform closestTarget;
-    float minLength;
-    Transform target;
-    int remaningTargetsCount;
-    float distanceToWaypoint;
-
-    Seeker seeker;
-    Rigidbody2D rb;
-
-    // Start is called before the first frame update
-    void Start()
+    public class KirillAI : MonoBehaviour
     {
-        seeker = GetComponent<Seeker>();
-        rb = GetComponent<Rigidbody2D>();
 
-        InvokeRepeating("UpdatePath", 0f, updatePathInterval);
+        public RuntimeSet targetCollection;
+        [SerializeField] private float speed = 200f;
+        [SerializeField] private float nextWaypointDistance = 3f;
+        [SerializeField] private float updatePathInterval = 0.5f;
+        [SerializeField] private float findShortestDelay = 0.5f;
 
-        StartCoroutine(FindShortestWithDelay());
-    }
+        private Path _path;
+        private int _currentWaypoint = 0;
+        private bool _reachedEndOfPath = false;
+        private Transform _closestTarget;
+        private float _minLength;
+        private Transform _target;
+        private int _remainingTargetsCount;
+        private float _distanceToWaypoint;
 
-    private IEnumerator FindShortestWithDelay()
-    {
-        yield return new WaitForSeconds(findShortestInterval);
-        FindShortest();
-    }
+        private Seeker _seeker;
+        private Rigidbody2D _rb;
 
-    void UpdatePath()
-    {
-        if (seeker.IsDone())
+        // Start is called before the first frame update
+        private void Start()
         {
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
+            _seeker = GetComponent<Seeker>();
+            _rb = GetComponent<Rigidbody2D>();
+
+            InvokeRepeating("UpdatePath", 0f, updatePathInterval);
+
+            StartCoroutine(FindShortestWithDelay());
         }
+
+        private IEnumerator FindShortestWithDelay()
+        {
+            yield return new WaitForSeconds(findShortestDelay);
+            FindShortest();
+        }
+
+        private void UpdatePath()
+        {
+            if (_seeker.IsDone())
+            {
+                _seeker.StartPath(_rb.position, _target.position, OnPathComplete);
+            }
         
-    }
-
-    void OnPathComplete(Path p)
-    {
-        if (!p.error)
-        {
-            path = p;
-            currentWaypoint = 0;
-        }
-    }
-    public void FindShortest()
-    {
-        RequestManager.ResetRequests();
-
-        minLength = Mathf.Infinity;
-        remaningTargetsCount = targetCollection.Items.Count;
-        foreach (Transform tmpTarget in targetCollection.Items)
-        {
-            RequestManager.RequestPath(rb.position, tmpTarget.transform, OnTmpPathComplete);
-        }
-    }
-    void OnTmpPathComplete(Transform tmpTarget, float length)
-    {
-        remaningTargetsCount--;
-        if (length < minLength)
-        {
-            minLength = length;
-            closestTarget = tmpTarget;
-        }
-        if (remaningTargetsCount == 0)
-        {
-            target = closestTarget;
-        }
-    }
-    void FixedUpdate()
-    {
-        if (path == null)
-            return;
-        if(currentWaypoint >= path.vectorPath.Count)
-        {
-            reachedEndOfPath = true;
-            rb.velocity = Vector2.zero;
-        }
-        else
-        {
-            reachedEndOfPath = false;
         }
 
-        if (!reachedEndOfPath)
+        private void OnPathComplete(Path p)
         {
-            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            Vector2 force = direction * (speed * Time.deltaTime);
-
-            //rb.AddForce(force);
-            rb.velocity = force;
-
-            distanceToWaypoint = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+            if (p.error) return;
+            _path = p;
+            _currentWaypoint = 0;
         }
-
-        if (distanceToWaypoint < nextWaypointDistance && !reachedEndOfPath)
+    
+        public void FindShortest()
         {
-            currentWaypoint++;
-        }
+            RequestManager.ResetRequests();
 
+            _minLength = Mathf.Infinity;
+            _remainingTargetsCount = targetCollection.Items.Count;
+            foreach (Transform tmpTarget in targetCollection.Items)
+            {
+                RequestManager.RequestPath(_rb.position, tmpTarget.transform, OnTmpPathComplete);
+            }
+        }
+    
+        private void OnTmpPathComplete(Transform tmpTarget, float length)
+        {
+            _remainingTargetsCount--;
+            if (length < _minLength)
+            {
+                _minLength = length;
+                _closestTarget = tmpTarget;
+            }
+            if (_remainingTargetsCount == 0)
+            {
+                _target = _closestTarget;
+            }
+        }
+    
+        private void FixedUpdate()
+        {
+            if (_path == null)
+                return;
+            if(_currentWaypoint >= _path.vectorPath.Count)
+            {
+                _reachedEndOfPath = true;
+                _rb.velocity = Vector2.zero;
+            }
+            else
+            {
+                _reachedEndOfPath = false;
+            }
+
+            if (!_reachedEndOfPath)
+            {
+                Vector2 direction = ((Vector2)_path.vectorPath[_currentWaypoint] - _rb.position).normalized;
+                Vector2 force = direction * (speed * Time.deltaTime);
+
+                //rb.AddForce(force);
+                _rb.velocity = force;
+
+                _distanceToWaypoint = Vector2.Distance(_rb.position, _path.vectorPath[_currentWaypoint]);
+            }
+
+            if (_distanceToWaypoint < nextWaypointDistance && !_reachedEndOfPath)
+            {
+                _currentWaypoint++;
+            }
+
+        }
     }
 }
