@@ -8,16 +8,15 @@ namespace Items.Interaction.Base
 {
     public abstract class InteractableByEnemy : InteractableItem
     {
-        [SerializeField] protected RuntimeSet _itemRuntimeSet; 
-        
-        protected void OnCollisionEnter2D(Collision2D other)
-        {
-            if (other.gameObject.TryGetComponent(out UnitHealth unitHealth))
-            {
-                OnCollision(unitHealth);
-            }
-        }
+        [SerializeField] protected RuntimeSet _itemRuntimeSet;
 
-        protected abstract void OnCollision(UnitHealth unitHealth);
+        protected void OnEnable()
+        {
+            transform.SetParent(null);
+            _itemRuntimeSet.Add(transform);
+        }
+        
+        // protocol of collision
+        protected abstract void OnCollisionEnter2D(Collision2D other);
     }
 }

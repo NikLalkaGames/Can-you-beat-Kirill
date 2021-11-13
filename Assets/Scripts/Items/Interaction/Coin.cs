@@ -12,8 +12,6 @@ namespace Items.Interaction
 
         [SerializeField] private int _coinPickUpValue;
 
-        [SerializeField] private float _rotationSpeed;
-
         [SerializeField] private TransformGameEvent OnCoinClicked; 
 
         private void OnMouseDown()
@@ -23,11 +21,6 @@ namespace Items.Interaction
             OnCoinClicked.Raise(transform);
             
             PoolManager.ReleaseObject(gameObject);
-        }
-
-        private void FixedUpdate()
-        {
-            transform.RotateAround(transform.position, Vector3.up, _rotationSpeed * Time.fixedDeltaTime);
         }
     }
 }

@@ -9,25 +9,19 @@ namespace Items.Interaction
     public class HealingItem : InteractableByEnemy
     {
         [SerializeField] private float _healValue;
-        
-        [SerializeField] private GameEvent OnHealingItemInteracted;
 
-        private void OnEnable()
+        protected override void OnCollisionEnter2D(Collision2D other)
         {
-            transform.SetParent(null);
+            if (other.gameObject.TryGetComponent(out UnitHealth unitHealth))
+            {
+                unitHealth.Restore(_healValue);
+                _itemRuntimeSet.Remove(transform);
             
-            _itemRuntimeSet.Add(transform);
-        }
+                PoolManager.ReleaseObject(gameObject);
+                transform.SetParent(PoolManager.Instance.root);
+            }
+            
 
-        protected override void OnCollision(UnitHealth unitHealth)
-        {
-            unitHealth.Restore(_healValue);
-            _itemRuntimeSet.Remove(transform);
-            
-            PoolManager.ReleaseObject(gameObject);
-            transform.SetParent(PoolManager.Instance.root);
-            
-            OnHealingItemInteracted.Raise();
         }
     }
 }
