@@ -1,4 +1,5 @@
-﻿using EnemyBehaviour.Health;
+﻿using Common.Variables;
+using EnemyBehaviour.Health;
 using Items.Generation;
 using UnityEngine;
 
@@ -11,6 +12,10 @@ namespace EnemyBehaviour.Interaction
         [SerializeField] private float _damageValue;
 
         [SerializeField] private CoinDrop _coinDrop;
+
+        [SerializeField] private FloatVariable _clicksToDrop;
+
+        private float _clicksToDropCache;
         
 
         private int _numberOfClicks; 
@@ -18,6 +23,7 @@ namespace EnemyBehaviour.Interaction
         private void Awake()
         {
             if (_health is null) Debug.LogError("Need to attach health script");
+            _clicksToDropCache = _clicksToDrop.Value;
         }
 
         private void OnMouseDown()
@@ -25,7 +31,7 @@ namespace EnemyBehaviour.Interaction
             _numberOfClicks++;
             _health.Reduce(_damageValue);
 
-            if (_numberOfClicks % 5 == 0)
+            if (_numberOfClicks % _clicksToDropCache == 0)
             {
                 _coinDrop.enabled = true;
             }

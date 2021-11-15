@@ -19,7 +19,8 @@ namespace Common.Variables
             set
             {
                 _value = Mathf.Clamp(value, 0, MaxValue);
-                OnValueChanged.Raise();
+                if (OnValueChanged != null)
+                    OnValueChanged.Raise();
             }
         }
 
