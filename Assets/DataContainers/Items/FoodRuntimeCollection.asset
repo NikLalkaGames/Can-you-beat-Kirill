@@ -13,4 +13,3 @@ MonoBehaviour:
   m_Name: FoodRuntimeCollection
   m_EditorClassIdentifier: 
   Items: []
-  onItemRemoved: {fileID: 11400000, guid: ecbb359f5847a5e4abd00f824fed453a, type: 2}

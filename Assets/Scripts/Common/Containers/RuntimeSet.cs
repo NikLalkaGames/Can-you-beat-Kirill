@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Common.Containers
 {
@@ -11,7 +11,7 @@ namespace Common.Containers
 
         private void OnEnable()
         {
-            Items.Clear();
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         public void Add(Transform thing)
@@ -27,6 +27,11 @@ namespace Common.Containers
         }
         
         private void OnDisable()
+        {
+            Items.Clear();
+        }
+
+        private void OnSceneLoaded(Scene loadedScene, LoadSceneMode mode)
         {
             Items.Clear();
         }

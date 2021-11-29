@@ -714,6 +714,7 @@ MonoBehaviour:
   _health: {fileID: 2023137623904766001}
   _damageValue: 10
   _coinDrop: {fileID: 3262800483441874290}
+  _clicksToDrop: {fileID: 11400000, guid: 6679e449940b4ef4db6761d9a7cb08b4, type: 2}
 --- !u!114 &3262800483441874290
 MonoBehaviour:
   m_ObjectHideFlags: 0
