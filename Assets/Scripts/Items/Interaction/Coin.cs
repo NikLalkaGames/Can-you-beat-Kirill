@@ -17,9 +17,9 @@ namespace Items.Interaction
 
         private void OnMouseDown()
         {
-            
             _totalCoins.Value += _coinPickUpValue;
             
+            // coin raise event with positioning
             OnCoinClicked.Raise(transform);
             
             PoolManager.ReleaseObject(gameObject);

@@ -13,7 +13,8 @@ namespace CameraLogic
 
         private void Awake()
         {
-            _cam = Camera.main;
+            TryGetComponent(out Camera camComp);
+            _cam = camComp;
         }
     }
 }

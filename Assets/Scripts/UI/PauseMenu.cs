@@ -1,4 +1,6 @@
 ﻿using System;
+using CameraLogic;
+using Common;
 using Common.Containers;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
@@ -11,7 +13,9 @@ namespace UI
 
         [SerializeField] private GameObject _pauseMenu;
 
-        [SerializeField] private GameObject _enemyToDisable;
+        [SerializeField] private Transform _viewTransform;
+
+        private Vector3 _viewPos;
 
         private void Update()
         {
@@ -24,19 +28,30 @@ namespace UI
 
         public void Resume()
         {
+            _viewTransform.position = _viewPos;
             _pauseMenu.SetActive(false);
             Time.timeScale = 1f;
-            _enemyToDisable.SetActive(true);
             _gameIsPaused = false;
         }
 
         private void Pause()
         {
+            _viewPos = _viewTransform.position;
+            _viewTransform.position = new Vector3(_viewPos.x, _viewPos.y, 0);
             _pauseMenu.SetActive(true);
             Time.timeScale = 0f;
-            _enemyToDisable.SetActive(false);
             _gameIsPaused = true;
         }
-        
+
+        public void ReturnToMenu()
+        {
+            SceneLoader.LoadScene("EntryScene");
+        }
+
+        public void Exit()
+        {
+            Application.Quit();
+        }
+
     }
 }
