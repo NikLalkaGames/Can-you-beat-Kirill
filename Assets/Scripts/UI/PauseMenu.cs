@@ -45,6 +45,8 @@ namespace UI
 
         public void ReturnToMenu()
         {
+            _gameIsPaused = false;
+            Time.timeScale = 1f;
             SceneLoader.LoadScene("EntryScene");
         }
 
