@@ -25,8 +25,7 @@ namespace EnemyBehaviour.AI
 
         private Seeker _seeker;
         private Rigidbody2D _rb;
-
-        // Start is called before the first frame update
+        
         private void Start()
         {
             _seeker = GetComponent<Seeker>();
@@ -64,8 +63,8 @@ namespace EnemyBehaviour.AI
             RequestManager.ResetRequests();
 
             _minLength = Mathf.Infinity;
-            _remainingTargetsCount = targetCollection.Items.Count;
-            foreach (Transform tmpTarget in targetCollection.Items)
+            _remainingTargetsCount = targetCollection.Things.Count;
+            foreach (Transform tmpTarget in targetCollection.Things)
             {
                 RequestManager.RequestPath(_rb.position, tmpTarget.transform, OnTmpPathComplete);
             }

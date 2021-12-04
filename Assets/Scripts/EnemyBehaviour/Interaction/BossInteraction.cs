@@ -16,7 +16,6 @@ namespace EnemyBehaviour.Interaction
         [SerializeField] private FloatVariable _clicksToDrop;
 
         private float _clicksToDropCache;
-        
 
         private int _numberOfClicks; 
 

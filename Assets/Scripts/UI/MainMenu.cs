@@ -1,8 +1,7 @@
-﻿using Common.Containers;
+﻿using Common;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-namespace Common
+namespace UI
 {
     public class MainMenu : MonoBehaviour
     {

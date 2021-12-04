@@ -7,33 +7,33 @@ namespace Common.Containers
     [CreateAssetMenu(menuName = "Items/RuntimeSet", order = 0)]
     public class RuntimeSet : ScriptableObject
     {
-        public List<Transform> Items;
+        public List<Transform> Things;
 
-        private void OnEnable()
+        protected void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         public void Add(Transform thing)
         {
-            if (!Items.Contains(thing))
-                Items.Add(thing);
+            if (!Things.Contains(thing))
+                Things.Add(thing);
         }
 
         public void Remove(Transform thing)
         {
-            if (Items.Contains(thing))
-                Items.Remove(thing);
+            if (Things.Contains(thing))
+                Things.Remove(thing);
         }
         
-        private void OnDisable()
+        protected void OnDisable()
         {
-            Items.Clear();
+            Things.Clear();
         }
 
-        private void OnSceneLoaded(Scene loadedScene, LoadSceneMode mode)
+        protected void OnSceneLoaded(Scene loadedScene, LoadSceneMode mode)
         {
-            Items.Clear();
+            Things.Clear();
         }
     }
 }

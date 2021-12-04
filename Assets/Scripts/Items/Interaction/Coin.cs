@@ -1,4 +1,5 @@
 using System;
+using Common.Containers;
 using Common.Events;
 using Common.Variables;
 using Items.Interaction.Base;
@@ -12,10 +13,11 @@ namespace Items.Interaction
 
         [SerializeField] private int _coinPickUpValue;
 
-        [SerializeField] private TransformGameEvent OnCoinClicked; 
+        [SerializeField] private TransformGameEvent OnCoinClicked;
 
         private void OnMouseDown()
         {
+            
             _totalCoins.Value += _coinPickUpValue;
             
             OnCoinClicked.Raise(transform);
