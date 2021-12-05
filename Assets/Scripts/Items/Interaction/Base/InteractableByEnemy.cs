@@ -1,7 +1,5 @@
-﻿using System;
-using Common.Containers;
+﻿using Common.Containers;
 using Common.Events;
-using EnemyBehaviour.Health;
 using UnityEngine;
 
 namespace Items.Interaction.Base

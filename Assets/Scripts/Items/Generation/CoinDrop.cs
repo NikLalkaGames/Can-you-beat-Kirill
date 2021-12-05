@@ -1,6 +1,4 @@
-﻿using System;
-using Items.Interaction;
-using Unity.Mathematics;
+﻿using Unity.Mathematics;
 using UnityEngine;
 
 namespace Items.Generation

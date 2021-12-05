@@ -1,6 +1,4 @@
-﻿using System;
-using Common.Events;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Items.Interaction.Base
 {

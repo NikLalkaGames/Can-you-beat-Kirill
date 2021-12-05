@@ -1,4 +1,3 @@
-using System;
 using Common.Variables;
 using TMPro;
 using UnityEngine;

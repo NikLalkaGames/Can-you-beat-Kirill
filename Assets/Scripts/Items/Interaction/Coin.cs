@@ -1,5 +1,3 @@
-using System;
-using Common.Containers;
 using Common.Events;
 using Common.Variables;
 using Items.Interaction.Base;

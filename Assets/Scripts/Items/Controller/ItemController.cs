@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.ComponentModel.Design.Serialization;
 using CameraLogic;
-using Google.Protobuf.WellKnownTypes;
-using Items.Interaction;
 using Items.Interaction.Base;
 using Items.Interaction.Base.Interfaces;
 using MonsterLove.StateMachine;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Items.Controller

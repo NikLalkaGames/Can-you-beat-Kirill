@@ -125,4 +125,4 @@ MonoBehaviour:
   Price: 0
   _itemRuntimeSet: {fileID: 11400000, guid: eeacacaf9ec00fc499df8da4609d59bf, type: 2}
   onItemRemoved: {fileID: 11400000, guid: ecbb359f5847a5e4abd00f824fed453a, type: 2}
-  _healValue: 100
+  _healValue: 50

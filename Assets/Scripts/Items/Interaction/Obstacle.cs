@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Common.Events;
 using Items.Interaction.Base;
 using Items.Interaction.Base.Interfaces;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.PlayerLoop;
 
 namespace Items.Interaction
 {

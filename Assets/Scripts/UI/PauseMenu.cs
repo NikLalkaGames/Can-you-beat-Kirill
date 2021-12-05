@@ -1,8 +1,4 @@
-﻿using System;
-using CameraLogic;
-using Common;
-using Common.Containers;
-using Unity.IO.LowLevel.Unsafe;
+﻿using Common;
 using UnityEngine;
 
 namespace UI

@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections;
-using CameraLogic;
-using Common;
-using Common.Events;
-using Common.GameManagement;
 using Common.Variables;
 using Items.Controller;
-using Items.Interaction;
 using Items.Interaction.Base;
 using TMPro;
 using UnityEngine;

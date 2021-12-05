@@ -2,7 +2,7 @@
 using Items.Interaction.Base;
 using UnityEngine;
 
-namespace Items.Generation
+namespace Items.Generation.Base
 {
     public abstract class ItemGenerator : MonoBehaviour
     {

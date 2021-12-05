@@ -1,6 +1,4 @@
-﻿using Common.Events;
-using EnemyBehaviour.Health;
-using Items.Generation;
+﻿using EnemyBehaviour.Health;
 using Items.Interaction.Base;
 using UnityEngine;
 

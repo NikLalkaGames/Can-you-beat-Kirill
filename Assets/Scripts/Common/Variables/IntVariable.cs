@@ -1,7 +1,5 @@
-﻿using System;
-using Common.Events;
+﻿using Common.Events;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Common.Variables
 {

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
-using Common;
-using TMPro.EditorUtilities;
+﻿using System.Collections;
+using Common.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 

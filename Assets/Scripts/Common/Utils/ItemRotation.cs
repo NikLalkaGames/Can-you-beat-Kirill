@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Common
+namespace Common.Utils
 {
     public class ItemRotation : MonoBehaviour
     {
